@@ -1,6 +1,6 @@
 import kg_query
 from fuzzysearch import find_near_matches
-from config import NB_NOTIONS_TOPK, LLM_ENDPOINT, CHAT_MODEL, logger, TEMPERATURE, MAXTOKENS, MISTRAL_API_KEY
+from config import NB_NOTIONS_TOPK, LLM_ENDPOINT, CHAT_MODEL, logger, TEMPERATURE, MAXTOKENS
 import requests
 import json
 
@@ -25,34 +25,26 @@ class NLP_Courses_KG_Indexer:
 
     def call_llm_api(self, prompt: str) -> dict:
         """
-        Call the LLM API with the given prompt and return the response.
+        Call the Ollama chat API with the given prompt and return the response.
         Args:
             prompt: The input prompt string to send to the LLM API.
         Returns:
-            The response from the LLM API as a string.
+            The response from the LLM API as a dict.
         """
-    
-                
-        # Payload pour la requête
-        # Headers for the API request
-        headers = {
-            "Authorization": f"Bearer {MISTRAL_API_KEY}",
-            "Content-Type": "application/json",
-        }
-
-        # Data payload for the API request
         data = {
-            "model": "mistral-tiny",  # Replace with the model you want to use
+            "model": CHAT_MODEL,
             "messages": [
                 {"role": "user", "content": prompt}
             ],
-            "response_format": {"type": "json_object"}, 
-            "temperature": 0.7,  # Optional: Adjust for more creative reasoning
+            "format": "json",
+            "stream": False,
+            "options": {
+                "temperature": TEMPERATURE,
+            },
         }
 
-        # Envoi de la requête
         try:
-            response = requests.post(LLM_ENDPOINT, headers=headers, json=data)
+            response = requests.post(LLM_ENDPOINT, json=data)
             if response.status_code != 200:
                 logger.error(f"API request failed with status code {response.status_code}: {response.text}")
                 return {}
@@ -96,7 +88,7 @@ class NLP_Courses_KG_Indexer:
         if not response:
             return None
         try:
-            raw = response.get("choices", {})[0].get("message", {}).get("content", "")
+            raw = response.get("message", {}).get("content", "")
            
           
             parsed = json.loads(raw)

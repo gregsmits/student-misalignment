@@ -1,6 +1,3 @@
-
-
-
 // ============================================================
 // STEP 1: Create Course Nodes
 // ============================================================
@@ -94,21 +91,21 @@ CREATE
 /* Architecture Patterns Nodes */
 (web_architecture_home:Course {
   id: "web_architecture_home",
-  name: "Introduction aux architectures d'applications web", 
+  name: "Introduction aux architectures d applications web", 
   type: "Lecture", 
   duration: 5, 
   importance: "Indispensable"
 }),
 (lecture_technical_architecture:Course {
   id: "lecture_technical_architecture",
-  name: "Architecture technique d'applications web", 
+  name: "Architecture technique d applications web", 
   type: "Lecture", 
   duration: 10, 
   importance: "Indispensable"
 }),
 (lecture_software_architecture:Course {
   id: "lecture_software_architecture",
-  name: "Architecture logicielle d'applications web", 
+  name: "Architecture logicielle d applications web", 
   type: "Lecture", 
   duration: 10, 
   importance: "Indispensable"
@@ -159,7 +156,7 @@ CREATE
 }),
 (practice_spring_2tiers_ext:Course {
   id: "practice_spring_2tiers_ext",
-  name: "Deploiement d'une application Spring", 
+  name: "Deploiement d une application Spring", 
   type: "Practical Activity", 
   duration: 75, 
   importance: "Complement"
@@ -928,6 +925,7 @@ UNWIND [
   {id: 'JSON.1', label: 'JSON'},
   {id: 'JSON.2', label: 'Jackson'},
   {id: 'Archi.56', label: 'Eureka'},
+  {id: 'Archi.57', label: 'Kafka'},
   {id: 'Archi.58', label: 'SAGA (orchestration, chorégraphie)'},
   {id: 'Archi.59', label: 'Serveur de messages'},
   {id: 'Archi.60', label: 'Registre de micro-services'},
@@ -1415,7 +1413,6 @@ UNWIND [
   {section: "MVC dans Spring", ids: ['Archi.25','Archi.38','Archi.39','Archi.40']},
   {section: "Développer du MVC avec Spring", ids: ['Archi.38','Archi.42','Archi.43','Archi.44','Archi.40','Archi.39','Archi.41']},
   {section: "Rappel sur l'architecture technique", ids: ['Archi.11','Archi.45']},
-  {section: "Présentation de l'application", ids: ['Archi.46','Archi.47','Archi.48']},
   {section: "Structuration de l'application", ids: ['Archi.49','Archi.35','Archi.19','Archi.38','Archi.40','Archi.39']},
   {section: "La couche présentation", ids: ['Archi.38','Archi.39','Archi.40','Archi.19','Archi.18','Archi.42','Archi.41','Archi.13','Archi.50','Archi.37','Archi.44','Archi.51']},
   {section: "Vers des architectures REST pour les micro-services", ids: ['Archi.30','Archi.2','Archi.38','Archi.43','Archi.52','Archi.49']},
@@ -1445,14 +1442,12 @@ UNWIND [
   {section: "Tester une application multi-couche", ids: ['TEST.6', 'TEST.7', 'TEST.8']},
   {section: "Tester les repositories de la couche données", ids: ['TEST.13', 'TEST.10', 'TEST.11', 'TEST.12']},
   {section: "Configuration", ids: ['TEST.10']},
-  {section: "Bonnes pratiques", ids: ['TEST.8', 'TEST.11', 'TEST.14']},
   {section: "Tester les classes de la couche services", ids: ['TEST.2', 'TEST.3', 'TEST.6', 'TEST.16']},
   {section: "Les tests unitaires", ids: ['TEST.2', 'TEST.6', 'TEST.16', 'TEST.17', 'TEST.18', 'TEST.19']},
   {section: "Les tests d'integration", ids: ['TEST.3', 'TEST.15', 'TEST.16']},
   {section: "Tests unitaires avec Junit", ids: ['TEST.2']},
   {section: "Tester les repository JPA", ids: ['TEST.6', 'TEST.7', 'TEST.8', 'TEST.9', 'TEST.10', 'TEST.11', 'TEST.12', 'TEST.13', 'TEST.14']},
   {section: "Tester la couche services", ids: ['TEST.2', 'TEST.3', 'TEST.6', 'TEST.7', 'TEST.8', 'TEST.9', 'TEST.14', 'TEST.15', 'TEST.16', 'TEST.17', 'TEST.18', 'TEST.19']},
-  {section: "Présentation de l'application", ids: ['Archi.29', 'Archi.56', 'Archi.60']},
   {section: "Réservation de billets avec une BD partagée", ids: ['Archi.29', 'Archi.51']},
   {section: "Les architectures par micro-services", ids: ['Archi.29']},
   {section: "Conception d'architectures micro-service", ids: ['Archi.29', 'Archi.4', 'Archi.1']},
@@ -1483,7 +1478,6 @@ UNWIND [
   {section: "Quand utiliser DAO ou Repository ?", ids: ['Archi.4', 'Archi.17', 'Archi.20', 'Archi.65', 'Archi.24']},
   {section: "Retour sur le contexte transactionnel", ids: ['JPA.23','JPA.24','JPA.30','JPA.27','JPA.26','JPA.28']},
   {section: "Persistance de données", ids: ['Data.1', 'Data.2', 'Data.3']},
-  {section: "Introduction", ids: ['Data.4', 'Data.5', 'Data.66']},
   {section: "Définitions", ids: ['Data.4', 'Data.6', 'Data.7', 'Data.8', 'Data.9', 'Data.10', 'Data.11', 'Data.12']},
   {section: "Integrité de relation", ids: ['Data.18', 'Data.13', 'Data.14', 'Data.16']},
   {section: "Integrité de domaine", ids: ['Data.17']},
@@ -1494,8 +1488,7 @@ UNWIND [
   {section: "Dictionnaire de données", ids: ['Data.22', 'Data.23', 'Data.24', 'Data.40']},
   {section: "Relation universelle", ids: ['Data.22', 'Data.25', 'Data.40']},
   {section: "Redondance et difficulté d'interrogation", ids: ['Data.21', 'Data.22']},
-  {section: "Introduction", ids: ['Data.23', 'Data.24', 'Archi.46']},
-  {section: "Le langage UML (enfin une partie)", ids: ['UML1', 'UML.2', 'UML.3', 'UML.4', 'UML.5', 'UML.6', 'UML.7', 'UML.8', 'UML.9', 'UML.10', 'UML.11', 'UML.12', 'UML.13', 'UML.14']},
+  {section: "Le langage UML (enfin une partie)", ids: ['UML.1', 'UML.2', 'UML.3', 'UML.4', 'UML.5', 'UML.6', 'UML.7', 'UML.8', 'UML.9', 'UML.10', 'UML.11', 'UML.12', 'UML.13', 'UML.14']},
   {section: "Règle 1 - Dérivation d'une classe", ids: ['Data.26', 'Data.27', 'Data.28']},
   {section: "Règle 2 - Dérivation d'une association de type 1:1", ids: ['Data.26', 'Data.27', 'Data.28']},
   {section: "Règle 3 - Dérivation d'une association de type 1:N", ids: ['Data.26', 'Data.27', 'Data.28']},
@@ -1503,7 +1496,6 @@ UNWIND [
   {section: "Règle 5 - Dérivation de l'héritage de classes", ids: ['Data.26', 'Data.27', 'Data.28']},
   {section: "La place de la modélisation conceptuelle de données", ids: ['Data.23', 'Archi.46', 'Data.26', 'Data.27', 'Data.28']},
   {section: "Présentation du problème", ids: ['Data.23', 'Archi.46', 'Data.26', 'Data.27', 'Data.28']},
-  {section: "Introduction", ids: ['Data.25', 'Data.40']},
   {section: "Définition", ids: ['Data.29']},
   {section: "Quelques propriétés des dépendances fonctionnelles", ids: ['Data.34', 'Data.35']},
   {section: "Types de dépendances fonctionnelles", ids: ['Data.30', 'Data.31']},
@@ -1520,7 +1512,6 @@ UNWIND [
   {section: "Applications", ids: ['Data.41', 'Data.36', 'Data.37', 'Data.38', 'Data.39']},
   {section: "Les vues en SQL", ids: ['Data.42', 'Data.43', 'Data.44', 'Data.45', 'Data.46']},
   {section: "Activité pratique - Indépendance des données - Mécanisme des vues externes", ids: ['Data.42', 'Data.43', 'Data.44', 'Data.47', 'Data.48', 'Data.49']},
-  {section: "Introduction", ids: ['Data.50', 'Data.51', 'Data.52', 'Data.57']},
   {section: "Projection", ids: ['Data.53']},
   {section: "Sélection", ids: ['Data.54']},
   {section: "Composition de tuples", ids: ['Data.55']},
@@ -1538,7 +1529,7 @@ UNWIND [
   {section: "Jointures entre plusieurs tables", ids: ['SQL.5', 'SQL.6']},
   {section: "Calculs et regroupements", ids: ['SQL.7', 'SQL.8', 'SQL.9', 'SQL.10', 'SQL.11']},
   {section: "Description de la base de données SOINS", ids: ['Data.14', 'Data.15', 'Data.26']},
-  {section: "Accès à la BD", ids: ['6', '10', '11', '17']},
+  {section: "Accès à la BD", ids: ['DB.1', 'DB.2', 'DB.8', 'Archi.47']},
   {section: "Pattern matching et tris", ids: ['SQL.3', 'SQL.4']},
   {section: "Jointures", ids: ['SQL.5', 'SQL.6']},
   {section: "Négations et listes", ids: ['SQL.12', 'SQL.13']},
@@ -1550,7 +1541,7 @@ UNWIND [
   {section: "Propriétés ACID", ids: ['Conc.5', 'Conc.6', 'Conc.7', 'Conc.9', 'Conc.8', 'Conc.10']},
   {section: "Concurrence", ids: ['Conc.10']},
   {section: "Contexte", ids: ['Data.1', 'Data.18']},
-  {section: "Mise en place du TP", ids: ['6', '10', '11', '17']},
+  {section: "Mise en place du TP", ids: ['DB.1', 'DB.2', 'Archi.47', 'Conc.1']},
   {section: "Présentation des vues", ids: ['Data.42']},
   {section: "Présentation des fonctions stockées", ids: ['Data.68']},
   {section: "Valider et annuler une transaction", ids: ['Data.68', 'Conc.1', 'Conc.2', 'Conc.3']},
@@ -1563,11 +1554,11 @@ UNWIND [
   {section: "Repeatable reads", ids: ['Conc.11', 'Conc.12', 'Conc.16', 'Conc.17', 'Conc.18', 'Conc.20']},
   {section: "Read commited", ids: ['Conc.11', 'Conc.12', 'Conc.13', 'Conc.17', 'Conc.18', 'Conc.21']},
   {section: "Read uncommited", ids: ['Conc.11', 'Conc.12', 'Conc.13', 'Conc.15', 'Conc.17', 'Conc.18', 'Conc.22']},
-  {section: "Création d'un environnement concurrent", ids: ['Conc.4', '17']},
+  {section: "Création d'un environnement concurrent", ids: ['Conc.4', 'Conc.10']},
   {section: "Découverte des niveaux d'isolation", ids: ['Conc.11', 'Conc.19', 'Conc.20', 'Conc.21', 'Conc.22']},
   {section: "Modification des niveaux d'isolation", ids: ['SQL.1', 'Conc.11']},
-  {section: "Lectures reproductibles", ids: ['SQL.1', 'Conc.2', 'Conc.11', 'Conc.19', 'Conc.21', 'Con.13']},
-  {section: "Fantômes", ids: ['SQL.1', 'Conc.2', 'Conc.11', 'Conc.19', 'Conc.21', 'Con.12']},
+  {section: "Lectures reproductibles", ids: ['SQL.1', 'Conc.2', 'Conc.11', 'Conc.19', 'Conc.21', 'Conc.13']},
+  {section: "Fantômes", ids: ['SQL.1', 'Conc.2', 'Conc.11', 'Conc.19', 'Conc.21', 'Conc.12']},
   {section: "Bilan du niveau Sérializable", ids: ['Conc.2', 'Conc.19']},
   {section: "Erreurs de séarialisation et interblocages", ids: ['SQL.1', 'Conc.2', 'Conc.11', 'Conc.19', 'Conc.21']},
   {section: "Phénomènes survenant lors des transactions", ids: ['Conc.12', 'Conc.13', 'Conc.15']},
@@ -1575,7 +1566,7 @@ UNWIND [
   {section: "Plan d'exécution des requêtes", ids: ['SQL.1', 'SQL.3', 'SQL.5']},
   {section: "EXPLAIN", ids: ['Conc.23', 'Conc.24']},
   {section: "Types d'index", ids: ['Conc.25', 'Conc.26', 'Conc.27', 'Conc.28', 'Conc.29']},
-  {section: "Création d'un index", ids: ['conc.23', 'Conc.27']},
+  {section: "Création d'un index", ids: ['Conc.23', 'Conc.27']},
   {section: "Colonne tx_vector", ids: ['SQL.1', 'SQL.16', 'SQL.18', 'Conc.25', 'Conc.26']}
 ] AS entry
 UNWIND entry.ids AS notionId
@@ -1584,65 +1575,20 @@ MATCH (n:Notion {id: notionId})
 MERGE (s)-[:has_notion]->(n);
 
 // ============================================================
-// NEW COURSES: Test BD (Partie 1) and Test TP (Partie 2)
+// STEP 6b: URL-based matching for sections with duplicate labels
 // ============================================================
-
-// STEP A: Create the two new Course nodes
-CREATE
-(test_bd:Course {
-  id: "test_intermediaire_part1",
-  name: "Test BD",
-  type: "Practical Activity",
-  duration: 30,
-  importance: "Indispensable"
-}),
-(test_tp:Course {
-  id: "test_intermediaire_part2",
-  name: "Test TP",
-  type: "Practical Activity",
-  duration: 120,
-  importance: "Indispensable"
-});
-
-// STEP B: Create prerequisite relationships
-MATCH (modConc:Course {id: "lecture_conceptual_modeling"}),
-      (depFonc:Course {id: "activity_normalization"}),
-      (modRel:Course {id: "activity_relational_model"}),
-      (jpaRepo:Course {id: "lecture_jpa_repository"}),
-      (springWeb:Course {id: "practice_spring_2tiers"}),
-      (jpaAdv:Course {id: "practice_jpa_advanced"}),
-      (testBd:Course {id: "test_intermediaire_part1"}),
-      (testTp:Course {id: "test_intermediaire_part2"})
-
-// Test BD prerequisites
-MERGE (modConc)-[:PREREQUISITE]->(testBd)
-MERGE (depFonc)-[:PREREQUISITE]->(testBd)
-MERGE (modRel)-[:PREREQUISITE]->(testBd)
-
-// Test TP prerequisites
-MERGE (jpaRepo)-[:PREREQUISITE]->(testTp)
-MERGE (springWeb)-[:PREREQUISITE]->(testTp)
-MERGE (jpaAdv)-[:PREREQUISITE]->(testTp);
-
-// STEP C: Create the Section nodes
-CREATE
-(:Section {label: "Partie 1", order: 1, url: ""}),
-(:Section {label: "Partie 2", order: 1, url: ""});
-
-// STEP D: Link Courses to Sections
-MATCH (testBd:Course {id: "test_bd"}),
-      (testTp:Course {id: "test_tp"}),
-      (s1:Section {label: "Partie 1"}),
-      (s2:Section {label: "Partie 2"})
-MERGE (testBd)-[:has_section {orderInCourse: 1}]->(s1)
-MERGE (testTp)-[:has_section {orderInCourse: 1}]->(s2);
-
-// STEP E: Link Sections to Notions
 UNWIND [
-  {section: "Partie 1", ids: ['Data.26', 'Data.29', 'Data.28', 'Data.23']},
-  {section: "Partie 2", ids: ['JPA.1', 'JPA.7', 'JPA.8', 'Spring.11', 'Archi.66', 'Archi.5', 'Archi.51']}
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/lecture_relational_model.html", ids: ['Data.4', 'Data.5', 'Data.66']},
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/lecture_conceptual_modeling.html", ids: ['Data.23', 'Data.24', 'Archi.46']},
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/lecture_normalization.html", ids: ['Data.25', 'Data.40']},
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/lecture_relational_algebra.htm", ids: ['Data.50', 'Data.51', 'Data.52', 'Data.57']},
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/practice_spring_2tiers.html#pr%C3%A9sentation-de-lapplication", ids: ['Archi.46','Archi.47','Archi.48']},
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/practice_spring_microservices.html#pr%C3%A9sentation-de-lapplication", ids: ['Archi.29', 'Archi.56', 'Archi.60']},
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/lecture_springboot_tests.html#bonnes-pratiques", ids: ['TEST.8', 'TEST.11', 'TEST.14']},
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/lecture_springboot_tests.html#bonnes-pratiques-1", ids: ['TEST.8', 'TEST.11', 'TEST.14']},
+  {url: "https://hub.imt-atlantique.fr/uv-fip-inf210/lecture_jpa_repository.html#bonnes-pratiques", ids: ['Archi.65', 'Archi.4', 'Archi.17', 'Archi.20']}
 ] AS entry
 UNWIND entry.ids AS notionId
-MATCH (s:Section {label: entry.section})
+MATCH (s:Section {url: entry.url})
 MATCH (n:Notion {id: notionId})
 MERGE (s)-[:has_notion]->(n);

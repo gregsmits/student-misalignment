@@ -1,0 +1,919 @@
+Loading index and KG metadata...
+Loaded existing index (provider=ollama, model=qwen3-embedding)
+Loading KC corpus from data/queries/questions_resources_KC_expert.csv...
+Loaded 50 queries with expert KC annotations.
+
+Evaluating: KG-based @ K=4
+
+  Query: comment identifier les dépendances fonctionnelles élémentaires et directes
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: couverture minimale (0.0047), première forme normale (0.0040), troisième forme normale (0.0040), dépendance fonctionnelle (0.0040)
+    Matches:       dépendance fonctionnelle
+    Hit@4=1.0000  NDCG@4=0.2500
+
+  Query: donne moi les dépendances fonctionnelles pour la relation universelle suivante : {idCompetition, nomCompetition, debut, fin, idEpreuve, nomEpreuve, categorie, ville, idAthlete, nomAthlete, nationalite, perf, class
+    GT KCs:        dépendance fonctionnelle, modèle relationnel
+    Extracted KCs: couverture minimale (0.0063), première forme normale (0.0049), troisième forme normale (0.0049), dépendance fonctionnelle (0.0049)
+    Matches:       dépendance fonctionnelle
+    Hit@4=0.5000  NDCG@4=0.1667
+
+  Query: comment puis je identifier une clé primaire d'une table ?
+    GT KCs:        clef primaire, dépendance fonctionnelle
+    Extracted KCs: donnée persistante (0.0034), couverture minimale (0.0034), donnée redondante (0.0034), clé référentielle (0.0030)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Qu'est ce qu'un schéma logique ?
+    GT KCs:        modèle logique
+    Extracted KCs: règles de dérivation (0.0159), schéma conceptuel de données (0.0159), dérivation (0.0159), schéma logique de données (0.0159)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Qu'est ce qu'une dependance fonctionelle
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: première forme normale (0.0054), troisième forme normale (0.0054), dépendance fonctionnelle (0.0054), dépendance fonctionnelle élementaire (0.0054)
+    Matches:       dépendance fonctionnelle
+    Hit@4=1.0000  NDCG@4=0.3333
+
+  Query: regle de derivation d'un schéma conceptuel
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: règles de dérivation (0.0106), schéma conceptuel de données (0.0106), dérivation (0.0106), schéma logique de données (0.0106)
+    Matches:       dérivation
+    Hit@4=0.3333  NDCG@4=0.1818
+
+  Query: cest quoi ça la persistance dans une classe java
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0023), fetch (0.0022), entité gérée (0.0022), lazy (0.0022)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: si je veux ajouter de la persistance dans une classe entity pour que les istances de cette classe soient persistées dans la base données je dois faire quoi
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0024), fetch (0.0022), entité gérée (0.0022), lazy (0.0022)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Dans mon projet, j'ai deux entité: player et team, une equipe contient plusieurs joueurs, quelle annotation je dois utiliser pour lié les deux classes java dans mon repertoire entity ?
+    GT KCs:        association classes persistantes jpa, orm
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: par exemple si j'ai un id qui est associé à plusieurs paramètres alors j'ai une relation élémentaire et direct entre l'id et tout les autresparamètres
+    GT KCs:        clef primaire, dépendance fonctionnelle, normalisation
+    Extracted KCs: integrité référentielle (0.0044), integrité (0.0044), integrité utilisateur (0.0044), integrité de domaine (0.0044)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: qu'est-ce qu'une dépendances élémentaires
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: couverture minimale (0.0076), première forme normale (0.0049), troisième forme normale (0.0049), dépendance fonctionnelle (0.0049)
+    Matches:       dépendance fonctionnelle
+    Hit@4=1.0000  NDCG@4=0.2500
+
+  Query: Comment choisir la clé primaire d'une relation universelle ?
+    GT KCs:        clef primaire, dependance fonctionnelle
+    Extracted KCs: donnée persistante (0.0032), couverture minimale (0.0032), donnée redondante (0.0032), clé référentielle (0.0029)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: si je te donne un exemple de jeu de données tu peux me proposer une clé primaire ?
+    GT KCs:        clef primaire
+    Extracted KCs: donnée persistante (0.0038), couverture minimale (0.0038), donnée redondante (0.0038), clé référentielle (0.0034)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Comment faire pour que des instances d'une classe soient persistés ?
+    GT KCs:        classe persistante jpa
+    Extracted KCs: schéma conceptuel de données (0.0024), fetch (0.0022), entité gérée (0.0022), lazy (0.0022)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: comment faire un insert simple en sql
+    GT KCs:        sql
+    Extracted KCs: jointure (0.0070), clé référentielle (0.0041), clé primaire (0.0041), schéma logique de données (0.0041)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Qu'est-ce que la règle de dérivation d'un schéma conceptuel
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: règles de dérivation (0.0115), schéma conceptuel de données (0.0115), dérivation (0.0115), schéma logique de données (0.0115)
+    Matches:       dérivation
+    Hit@4=0.3333  NDCG@4=0.1818
+
+  Query: comment choisir les cles candidats dans une base des donnees
+    GT KCs:        clef candidate, dependance fonctionnelle
+    Extracted KCs: donnée persistante (0.0033), couverture minimale (0.0033), donnée redondante (0.0033), données (0.0031)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Donne moi la requete SQL qui crée une equipe avec un id et un nom
+    GT KCs:        sql
+    Extracted KCs: pgadmin (0.0165), sgbd (0.0165), postgresql (0.0165), schéma relationnel (0.0097)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: comment supprimer une entrée d'une table
+    GT KCs:        sql
+    Extracted KCs: jointure (0.0070), donnée persistante (0.0045), couverture minimale (0.0045), donnée redondante (0.0045)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Peux-tu me lister tous les types de dérivation possibles lorsque l'on passe d'un schéma conceptuel à un schéma logique ?
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: structuration d'une base de données relationnelles (0.0152), normalisation (0.0101), règles de dérivation (0.0098), schéma conceptuel de données (0.0098)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: A quoi sert l'annotation JoinColumn
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: quelles sont les annotations nécessaires pour qu'une classe entitry soient persistées dans le base de données
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0022), fetch (0.0020), entité gérée (0.0020), lazy (0.0020)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: comment uiliser l'annotation Id
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: En l’absence d’annotation, un attribut d’une classe annotée @Entity est-il persisté ? Si oui, comment on indique à Hibernate qu’un attribut ne doit pas l’être ?
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: "@GeneratedValue(strategy = GenerationType.IDENTITY) explique moi cette ligne"
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Quelle est la méthode de CrudRepository permettant de recupérer tous les elements present
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0048), architecture multi-couches (0.0048), couche données (0.0048), architecture logicielle (0.0048)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: donne un exemple de one to many
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: donnée persistante (0.0039), couverture minimale (0.0039), donnée redondante (0.0039), clé référentielle (0.0035)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: comment rajouter cette méthode findall dans le repository
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0058), architecture multi-couches (0.0058), couche données (0.0058), architecture logicielle (0.0058)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: qu'est ce que c'est les annotations dans le code java pour faire les relations entre les entités ? 
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: make a java class persistent
+    GT KCs:        classe persistante jpa
+    Extracted KCs: schéma conceptuel de données (0.0032), fetch (0.0030), entité gérée (0.0030), lazy (0.0030)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: comment créer une classe héritant de CrudRepository pour Team
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0046), architecture multi-couches (0.0046), couche données (0.0046), architecture logicielle (0.0046)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: comment utiliser le MappedBy ?
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: spring repository (0.0054), architecture multi-couches (0.0054), couche données (0.0054), architecture logicielle (0.0054)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Rappel moi les propriété ACID en base de donnée
+    GT KCs:        transaction base de données
+    Extracted KCs: accès concurrents (0.0125), verrou partagé (0.0045), lecture fantôme (0.0045), verrou exclusif (0.0045)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: qu'est ce que la deuxième forme normale ?
+    GT KCs:        normalisation
+    Extracted KCs: première forme normale (0.0044), troisième forme normale (0.0044), dépendance fonctionnelle (0.0044), dépendance fonctionnelle élementaire (0.0044)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: comment décomposer une relation universelle en ensemble de relation de seconde forme normale
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: première forme normale (0.0037), troisième forme normale (0.0037), dépendance fonctionnelle (0.0037), dépendance fonctionnelle élementaire (0.0037)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: As tu un example de cas ou une relation n''est pas une deuxième forme normale ?
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: couverture minimale (0.0063), première forme normale (0.0048), troisième forme normale (0.0048), dépendance fonctionnelle (0.0048)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: définis moi la troisème forme normale
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: couverture minimale (0.0052), première forme normale (0.0040), troisième forme normale (0.0040), dépendance fonctionnelle (0.0040)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: ACID signifie quoi ?
+    GT KCs:        transaction base de données
+    Extracted KCs: accès concurrents (0.0210), durabilité (0.0070), isolation (0.0070), auto-commit (0.0070)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: rappel moi JPA exactement ce que c'est
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0022), architecture multi-couches (0.0022), couche données (0.0022), architecture logicielle (0.0022)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: est ce que Hibernate est une implémentation concrète de JPA.
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0029), architecture multi-couches (0.0029), couche données (0.0029), architecture logicielle (0.0029)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Les composants annotés @Repository sont responsables de la gestion de la persistance des données.
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0047), architecture multi-couches (0.0047), couche données (0.0047), architecture logicielle (0.0047)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: L’annotation @Entity sert à marquer une classe Java comme une table en base de données. vrai ou faux
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: L’annotation @Id indique quel attribut de la classe est utilisé comme clé primaire dans la table correspondante. vrai ou faux
+    GT KCs:        classe persistante jpa, clef primaire
+    Extracted KCs: donnée persistante (0.0037), couverture minimale (0.0037), donnée redondante (0.0037), clé référentielle (0.0033)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: est ce que Avec JPA, les requêtes permettant de rendre persistantes les données de l'application sont écrites dans le code Java afin de lier le code et la BD.
+    GT KCs:        association classes persistantes jpa, classe persistante jpa, collection persistante, orm
+    Extracted KCs: spring repository (0.0023), architecture multi-couches (0.0023), couche données (0.0023), architecture logicielle (0.0023)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: JPA est une API qui spécifie les méthodes disponibles pour gérer la persistance des objets. vrai ou faux
+    GT KCs:        orm
+    Extracted KCs: schéma conceptuel de données (0.0031), fetch (0.0029), entité gérée (0.0029), lazy (0.0029)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: comment savoir si on est en 2FN
+    GT KCs:        normalisation
+    Extracted KCs: couverture minimale (0.0085), première forme normale (0.0066), troisième forme normale (0.0066), dépendance fonctionnelle (0.0066)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Peut-on définir JPA comme une API qui spécifie les méthodes disponibles pour gérer la persistance des objets ?
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0026), architecture multi-couches (0.0026), couche données (0.0026), architecture logicielle (0.0026)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: je souahite ajouter un élément grâce au répository, comment s'y prendre
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0053), architecture multi-couches (0.0053), couche données (0.0053), architecture logicielle (0.0053)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: Comment fonctionne le @JoinColumn ? Et quand l'utiliser
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+
+  Query: explique les onetomany et manytoone
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: donnée persistante (0.0034), couverture minimale (0.0034), donnée redondante (0.0034), clé référentielle (0.0030)
+    Matches:       (none)
+    Hit@4=0.0000  NDCG@4=0.0000
+  Hit@4 = 0.0833 ± 0.2500  |  NDCG@4 = 0.0273 ± 0.0765  |  Time = 1.3154s
+Evaluating: KG-based @ K=7
+
+  Query: comment identifier les dépendances fonctionnelles élémentaires et directes
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: couverture minimale (0.0047), première forme normale (0.0040), troisième forme normale (0.0040), dépendance fonctionnelle (0.0040), dépendance fonctionnelle élementaire (0.0040), forme normale (0.0040), deuxième forme normale (0.0040)
+    Matches:       dépendance fonctionnelle
+    Hit@7=1.0000  NDCG@7=0.2500
+
+  Query: donne moi les dépendances fonctionnelles pour la relation universelle suivante : {idCompetition, nomCompetition, debut, fin, idEpreuve, nomEpreuve, categorie, ville, idAthlete, nomAthlete, nationalite, perf, class
+    GT KCs:        dépendance fonctionnelle, modèle relationnel
+    Extracted KCs: couverture minimale (0.0063), première forme normale (0.0049), troisième forme normale (0.0049), dépendance fonctionnelle (0.0049), dépendance fonctionnelle élementaire (0.0049), forme normale (0.0049), deuxième forme normale (0.0049)
+    Matches:       dépendance fonctionnelle
+    Hit@7=0.5000  NDCG@7=0.1667
+
+  Query: comment puis je identifier une clé primaire d'une table ?
+    GT KCs:        clef primaire, dépendance fonctionnelle
+    Extracted KCs: donnée persistante (0.0034), couverture minimale (0.0034), donnée redondante (0.0034), clé référentielle (0.0030), clé primaire (0.0030), clé candidate (0.0030), integrité référentielle (0.0027)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Qu'est ce qu'un schéma logique ?
+    GT KCs:        modèle logique
+    Extracted KCs: règles de dérivation (0.0159), schéma conceptuel de données (0.0159), dérivation (0.0159), schéma logique de données (0.0159), modélisation conceptuelle (0.0116), jointure (0.0057), aggrégation (0.0028)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Qu'est ce qu'une dependance fonctionelle
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: première forme normale (0.0054), troisième forme normale (0.0054), dépendance fonctionnelle (0.0054), dépendance fonctionnelle élementaire (0.0054), forme normale (0.0054), deuxième forme normale (0.0054), relation universelle (0.0040)
+    Matches:       dépendance fonctionnelle
+    Hit@7=1.0000  NDCG@7=0.3333
+
+  Query: regle de derivation d'un schéma conceptuel
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: règles de dérivation (0.0106), schéma conceptuel de données (0.0106), dérivation (0.0106), schéma logique de données (0.0106), modélisation conceptuelle (0.0077), donnée persistante (0.0036), couverture minimale (0.0036)
+    Matches:       dérivation
+    Hit@7=0.3333  NDCG@7=0.1818
+
+  Query: cest quoi ça la persistance dans une classe java
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0023), fetch (0.0022), entité gérée (0.0022), lazy (0.0022), entité détachée (0.0022), eager (0.0022), méthode merge (0.0022)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: si je veux ajouter de la persistance dans une classe entity pour que les istances de cette classe soient persistées dans la base données je dois faire quoi
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0024), fetch (0.0022), entité gérée (0.0022), lazy (0.0022), entité détachée (0.0022), eager (0.0022), méthode merge (0.0022)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Dans mon projet, j'ai deux entité: player et team, une equipe contient plusieurs joueurs, quelle annotation je dois utiliser pour lié les deux classes java dans mon repertoire entity ?
+    GT KCs:        association classes persistantes jpa, orm
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: par exemple si j'ai un id qui est associé à plusieurs paramètres alors j'ai une relation élémentaire et direct entre l'id et tout les autresparamètres
+    GT KCs:        clef primaire, dépendance fonctionnelle, normalisation
+    Extracted KCs: integrité référentielle (0.0044), integrité (0.0044), integrité utilisateur (0.0044), integrité de domaine (0.0044), clé référentielle (0.0044), clé primaire (0.0044), clé candidate (0.0044)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: qu'est-ce qu'une dépendances élémentaires
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: couverture minimale (0.0076), première forme normale (0.0049), troisième forme normale (0.0049), dépendance fonctionnelle (0.0049), dépendance fonctionnelle élementaire (0.0049), forme normale (0.0049), deuxième forme normale (0.0049)
+    Matches:       dépendance fonctionnelle
+    Hit@7=1.0000  NDCG@7=0.2500
+
+  Query: Comment choisir la clé primaire d'une relation universelle ?
+    GT KCs:        clef primaire, dependance fonctionnelle
+    Extracted KCs: donnée persistante (0.0032), couverture minimale (0.0032), donnée redondante (0.0032), clé référentielle (0.0029), clé primaire (0.0029), clé candidate (0.0029), niveau physique (0.0028)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: si je te donne un exemple de jeu de données tu peux me proposer une clé primaire ?
+    GT KCs:        clef primaire
+    Extracted KCs: donnée persistante (0.0038), couverture minimale (0.0038), donnée redondante (0.0038), clé référentielle (0.0034), clé primaire (0.0034), clé candidate (0.0034), niveau physique (0.0026)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Comment faire pour que des instances d'une classe soient persistés ?
+    GT KCs:        classe persistante jpa
+    Extracted KCs: schéma conceptuel de données (0.0024), fetch (0.0022), entité gérée (0.0022), lazy (0.0022), entité détachée (0.0022), eager (0.0022), méthode merge (0.0022)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: comment faire un insert simple en sql
+    GT KCs:        sql
+    Extracted KCs: jointure (0.0070), clé référentielle (0.0041), clé primaire (0.0041), schéma logique de données (0.0041), aggrégation (0.0035), regroupement (0.0035), having (0.0035)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Qu'est-ce que la règle de dérivation d'un schéma conceptuel
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: règles de dérivation (0.0115), schéma conceptuel de données (0.0115), dérivation (0.0115), schéma logique de données (0.0115), modélisation conceptuelle (0.0084), opérateur ensembliste (0.0003), donnée (0.0003)
+    Matches:       dérivation
+    Hit@7=0.3333  NDCG@7=0.1818
+
+  Query: comment choisir les cles candidats dans une base des donnees
+    GT KCs:        clef candidate, dependance fonctionnelle
+    Extracted KCs: donnée persistante (0.0033), couverture minimale (0.0033), donnée redondante (0.0033), données (0.0031), persistance (0.0031), stockage (0.0031), sauvegarde (0.0031)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Donne moi la requete SQL qui crée une equipe avec un id et un nom
+    GT KCs:        sql
+    Extracted KCs: pgadmin (0.0165), sgbd (0.0165), postgresql (0.0165), schéma relationnel (0.0097), schéma de base de données (0.0097), environnement de développement (0.0082), conteneurisation (0.0066)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: comment supprimer une entrée d'une table
+    GT KCs:        sql
+    Extracted KCs: jointure (0.0070), donnée persistante (0.0045), couverture minimale (0.0045), donnée redondante (0.0045), clé référentielle (0.0040), clé primaire (0.0040), clé candidate (0.0040)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Peux-tu me lister tous les types de dérivation possibles lorsque l'on passe d'un schéma conceptuel à un schéma logique ?
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: structuration d'une base de données relationnelles (0.0152), normalisation (0.0101), règles de dérivation (0.0098), schéma conceptuel de données (0.0098), dérivation (0.0098), schéma logique de données (0.0098), modélisation conceptuelle (0.0072)
+    Matches:       dérivation
+    Hit@7=0.3333  NDCG@7=0.1091
+
+  Query: A quoi sert l'annotation JoinColumn
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: quelles sont les annotations nécessaires pour qu'une classe entitry soient persistées dans le base de données
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0022), fetch (0.0020), entité gérée (0.0020), lazy (0.0020), entité détachée (0.0020), eager (0.0020), méthode merge (0.0020)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: comment uiliser l'annotation Id
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: En l’absence d’annotation, un attribut d’une classe annotée @Entity est-il persisté ? Si oui, comment on indique à Hibernate qu’un attribut ne doit pas l’être ?
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: "@GeneratedValue(strategy = GenerationType.IDENTITY) explique moi cette ligne"
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Quelle est la méthode de CrudRepository permettant de recupérer tous les elements present
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0048), architecture multi-couches (0.0048), couche données (0.0048), architecture logicielle (0.0048), data access object (0.0039), bonnes pratiques tests (0.0016), configuration du test slicing (0.0016)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: donne un exemple de one to many
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: donnée persistante (0.0039), couverture minimale (0.0039), donnée redondante (0.0039), clé référentielle (0.0035), clé primaire (0.0035), clé candidate (0.0035), registre de micro-services (0.0009)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: comment rajouter cette méthode findall dans le repository
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0058), architecture multi-couches (0.0058), couche données (0.0058), architecture logicielle (0.0058), data access object (0.0047), bonnes pratiques tests (0.0016), configuration du test slicing (0.0016)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: qu'est ce que c'est les annotations dans le code java pour faire les relations entre les entités ? 
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: make a java class persistent
+    GT KCs:        classe persistante jpa
+    Extracted KCs: schéma conceptuel de données (0.0032), fetch (0.0030), entité gérée (0.0030), lazy (0.0030), entité détachée (0.0030), eager (0.0030), méthode merge (0.0030)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: comment créer une classe héritant de CrudRepository pour Team
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0046), architecture multi-couches (0.0046), couche données (0.0046), architecture logicielle (0.0046), data access object (0.0037), bonnes pratiques tests (0.0014), configuration du test slicing (0.0014)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: comment utiliser le MappedBy ?
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: spring repository (0.0054), architecture multi-couches (0.0054), couche données (0.0054), architecture logicielle (0.0054), data access object (0.0043), méthodes crud (0.0009), collection persistante (0.0009)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Rappel moi les propriété ACID en base de donnée
+    GT KCs:        transaction base de données
+    Extracted KCs: accès concurrents (0.0125), verrou partagé (0.0045), lecture fantôme (0.0045), verrou exclusif (0.0045), niveau d'isolation (0.0045), durabilité (0.0042), isolation (0.0042)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: qu'est ce que la deuxième forme normale ?
+    GT KCs:        normalisation
+    Extracted KCs: première forme normale (0.0044), troisième forme normale (0.0044), dépendance fonctionnelle (0.0044), dépendance fonctionnelle élementaire (0.0044), forme normale (0.0044), deuxième forme normale (0.0044), relation universelle (0.0032)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: comment décomposer une relation universelle en ensemble de relation de seconde forme normale
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: première forme normale (0.0037), troisième forme normale (0.0037), dépendance fonctionnelle (0.0037), dépendance fonctionnelle élementaire (0.0037), forme normale (0.0037), deuxième forme normale (0.0037), relation universelle (0.0027)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: As tu un example de cas ou une relation n''est pas une deuxième forme normale ?
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: couverture minimale (0.0063), première forme normale (0.0048), troisième forme normale (0.0048), dépendance fonctionnelle (0.0048), dépendance fonctionnelle élementaire (0.0048), forme normale (0.0048), deuxième forme normale (0.0048)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: définis moi la troisème forme normale
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: couverture minimale (0.0052), première forme normale (0.0040), troisième forme normale (0.0040), dépendance fonctionnelle (0.0040), dépendance fonctionnelle élementaire (0.0040), forme normale (0.0040), deuxième forme normale (0.0040)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: ACID signifie quoi ?
+    GT KCs:        transaction base de données
+    Extracted KCs: accès concurrents (0.0210), durabilité (0.0070), isolation (0.0070), auto-commit (0.0070), commit (0.0070), atomicité (0.0070), transaction (0.0070)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: rappel moi JPA exactement ce que c'est
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0022), architecture multi-couches (0.0022), couche données (0.0022), architecture logicielle (0.0022), bonnes pratiques tests (0.0013), configuration du test slicing (0.0013), test repository jpa (0.0013)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: est ce que Hibernate est une implémentation concrète de JPA.
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0029), architecture multi-couches (0.0029), couche données (0.0029), architecture logicielle (0.0029), bonnes pratiques tests (0.0017), configuration du test slicing (0.0017), test repository jpa (0.0017)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Les composants annotés @Repository sont responsables de la gestion de la persistance des données.
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0047), architecture multi-couches (0.0047), couche données (0.0047), architecture logicielle (0.0047), data access object (0.0038), vue spring (0.0020), contrôleur spring (0.0020)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: L’annotation @Entity sert à marquer une classe Java comme une table en base de données. vrai ou faux
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: L’annotation @Id indique quel attribut de la classe est utilisé comme clé primaire dans la table correspondante. vrai ou faux
+    GT KCs:        classe persistante jpa, clef primaire
+    Extracted KCs: donnée persistante (0.0037), couverture minimale (0.0037), donnée redondante (0.0037), clé référentielle (0.0033), clé primaire (0.0033), clé candidate (0.0033), méthodes crud (0.0008)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: est ce que Avec JPA, les requêtes permettant de rendre persistantes les données de l'application sont écrites dans le code Java afin de lier le code et la BD.
+    GT KCs:        association classes persistantes jpa, classe persistante jpa, collection persistante, orm
+    Extracted KCs: spring repository (0.0023), architecture multi-couches (0.0023), couche données (0.0023), architecture logicielle (0.0023), bonnes pratiques tests (0.0014), configuration du test slicing (0.0014), test repository jpa (0.0014)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: JPA est une API qui spécifie les méthodes disponibles pour gérer la persistance des objets. vrai ou faux
+    GT KCs:        orm
+    Extracted KCs: schéma conceptuel de données (0.0031), fetch (0.0029), entité gérée (0.0029), lazy (0.0029), entité détachée (0.0029), eager (0.0029), méthode merge (0.0029)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: comment savoir si on est en 2FN
+    GT KCs:        normalisation
+    Extracted KCs: couverture minimale (0.0085), première forme normale (0.0066), troisième forme normale (0.0066), dépendance fonctionnelle (0.0066), dépendance fonctionnelle élementaire (0.0066), forme normale (0.0066), deuxième forme normale (0.0066)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Peut-on définir JPA comme une API qui spécifie les méthodes disponibles pour gérer la persistance des objets ?
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0026), architecture multi-couches (0.0026), couche données (0.0026), architecture logicielle (0.0026), bonnes pratiques tests (0.0016), configuration du test slicing (0.0016), test repository jpa (0.0016)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: je souahite ajouter un élément grâce au répository, comment s'y prendre
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0053), architecture multi-couches (0.0053), couche données (0.0053), architecture logicielle (0.0053), data access object (0.0043), service (0.0033), framework de programmation (0.0033)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: Comment fonctionne le @JoinColumn ? Et quand l'utiliser
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+
+  Query: explique les onetomany et manytoone
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: donnée persistante (0.0034), couverture minimale (0.0034), donnée redondante (0.0034), clé référentielle (0.0030), clé primaire (0.0030), clé candidate (0.0030), méthodes crud (0.0007)
+    Matches:       (none)
+    Hit@7=0.0000  NDCG@7=0.0000
+  Hit@7 = 0.0900 ± 0.2521  |  NDCG@7 = 0.0295 ± 0.0773  |  Time = 1.2337s
+Evaluating: KG-based @ K=10
+
+  Query: comment identifier les dépendances fonctionnelles élémentaires et directes
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: couverture minimale (0.0047), première forme normale (0.0040), troisième forme normale (0.0040), dépendance fonctionnelle (0.0040), dépendance fonctionnelle élementaire (0.0040), forme normale (0.0040), deuxième forme normale (0.0040), relation universelle (0.0029), propriété d'une dépendance fonctionnelle (0.0014), règle d'inférence d'armstrong (0.0014)
+    Matches:       dépendance fonctionnelle
+    Hit@10=1.0000  NDCG@10=0.2500
+
+  Query: donne moi les dépendances fonctionnelles pour la relation universelle suivante : {idCompetition, nomCompetition, debut, fin, idEpreuve, nomEpreuve, categorie, ville, idAthlete, nomAthlete, nationalite, perf, class
+    GT KCs:        dépendance fonctionnelle, modèle relationnel
+    Extracted KCs: couverture minimale (0.0063), première forme normale (0.0049), troisième forme normale (0.0049), dépendance fonctionnelle (0.0049), dépendance fonctionnelle élementaire (0.0049), forme normale (0.0049), deuxième forme normale (0.0049), relation universelle (0.0036), propriété d'une dépendance fonctionnelle (0.0018), règle d'inférence d'armstrong (0.0018)
+    Matches:       dépendance fonctionnelle
+    Hit@10=0.5000  NDCG@10=0.1667
+
+  Query: comment puis je identifier une clé primaire d'une table ?
+    GT KCs:        clef primaire, dépendance fonctionnelle
+    Extracted KCs: donnée persistante (0.0034), couverture minimale (0.0034), donnée redondante (0.0034), clé référentielle (0.0030), clé primaire (0.0030), clé candidate (0.0030), integrité référentielle (0.0027), integrité (0.0027), integrité utilisateur (0.0027), integrité de domaine (0.0027)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Qu'est ce qu'un schéma logique ?
+    GT KCs:        modèle logique
+    Extracted KCs: règles de dérivation (0.0159), schéma conceptuel de données (0.0159), dérivation (0.0159), schéma logique de données (0.0159), modélisation conceptuelle (0.0116), jointure (0.0057), aggrégation (0.0028), group by (0.0028), regroupement (0.0028), langage sql (0.0028)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Qu'est ce qu'une dependance fonctionelle
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: première forme normale (0.0054), troisième forme normale (0.0054), dépendance fonctionnelle (0.0054), dépendance fonctionnelle élementaire (0.0054), forme normale (0.0054), deuxième forme normale (0.0054), relation universelle (0.0040), opérateur ensembliste (0.0004), donnée (0.0004), expression algébrique imbriquée (0.0004)
+    Matches:       dépendance fonctionnelle
+    Hit@10=1.0000  NDCG@10=0.3333
+
+  Query: regle de derivation d'un schéma conceptuel
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: règles de dérivation (0.0106), schéma conceptuel de données (0.0106), dérivation (0.0106), schéma logique de données (0.0106), modélisation conceptuelle (0.0077), donnée persistante (0.0036), couverture minimale (0.0036), donnée redondante (0.0036), clé référentielle (0.0032), clé primaire (0.0032)
+    Matches:       dérivation
+    Hit@10=0.3333  NDCG@10=0.1818
+
+  Query: cest quoi ça la persistance dans une classe java
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0023), fetch (0.0022), entité gérée (0.0022), lazy (0.0022), entité détachée (0.0022), eager (0.0022), méthode merge (0.0022), data access object (0.0020), entitymanager (0.0020), méthodes crud (0.0008)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: si je veux ajouter de la persistance dans une classe entity pour que les istances de cette classe soient persistées dans la base données je dois faire quoi
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0024), fetch (0.0022), entité gérée (0.0022), lazy (0.0022), entité détachée (0.0022), eager (0.0022), méthode merge (0.0022), data access object (0.0021), entitymanager (0.0021), méthodes crud (0.0007)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Dans mon projet, j'ai deux entité: player et team, une equipe contient plusieurs joueurs, quelle annotation je dois utiliser pour lié les deux classes java dans mon repertoire entity ?
+    GT KCs:        association classes persistantes jpa, orm
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004), schéma conceptuel de données (0.0004), @transactional (0.0004), mapping association entre classes (0.0003)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: par exemple si j'ai un id qui est associé à plusieurs paramètres alors j'ai une relation élémentaire et direct entre l'id et tout les autresparamètres
+    GT KCs:        clef primaire, dépendance fonctionnelle, normalisation
+    Extracted KCs: integrité référentielle (0.0044), integrité (0.0044), integrité utilisateur (0.0044), integrité de domaine (0.0044), clé référentielle (0.0044), clé primaire (0.0044), clé candidate (0.0044), integrité d'une relation (0.0044), modèle relationnel (0.0012), opérateur ensembliste (0.0010)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: qu'est-ce qu'une dépendances élémentaires
+    GT KCs:        dépendance fonctionnelle
+    Extracted KCs: couverture minimale (0.0076), première forme normale (0.0049), troisième forme normale (0.0049), dépendance fonctionnelle (0.0049), dépendance fonctionnelle élementaire (0.0049), forme normale (0.0049), deuxième forme normale (0.0049), relation universelle (0.0036), layered slicing (0.0035), configuration du test slicing (0.0034)
+    Matches:       dépendance fonctionnelle
+    Hit@10=1.0000  NDCG@10=0.2500
+
+  Query: Comment choisir la clé primaire d'une relation universelle ?
+    GT KCs:        clef primaire, dependance fonctionnelle
+    Extracted KCs: donnée persistante (0.0032), couverture minimale (0.0032), donnée redondante (0.0032), clé référentielle (0.0029), clé primaire (0.0029), clé candidate (0.0029), niveau physique (0.0028), niveau logique (0.0028), grant (0.0028), integrité référentielle (0.0025)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: si je te donne un exemple de jeu de données tu peux me proposer une clé primaire ?
+    GT KCs:        clef primaire
+    Extracted KCs: donnée persistante (0.0038), couverture minimale (0.0038), donnée redondante (0.0038), clé référentielle (0.0034), clé primaire (0.0034), clé candidate (0.0034), niveau physique (0.0026), niveau logique (0.0026), grant (0.0026), integrité référentielle (0.0026)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Comment faire pour que des instances d'une classe soient persistés ?
+    GT KCs:        classe persistante jpa
+    Extracted KCs: schéma conceptuel de données (0.0024), fetch (0.0022), entité gérée (0.0022), lazy (0.0022), entité détachée (0.0022), eager (0.0022), méthode merge (0.0022), data access object (0.0021), entitymanager (0.0021), méthodes crud (0.0008)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: comment faire un insert simple en sql
+    GT KCs:        sql
+    Extracted KCs: jointure (0.0070), clé référentielle (0.0041), clé primaire (0.0041), schéma logique de données (0.0041), aggrégation (0.0035), regroupement (0.0035), having (0.0035), clause where (0.0035), select (0.0035), count (0.0035)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Qu'est-ce que la règle de dérivation d'un schéma conceptuel
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: règles de dérivation (0.0115), schéma conceptuel de données (0.0115), dérivation (0.0115), schéma logique de données (0.0115), modélisation conceptuelle (0.0084), opérateur ensembliste (0.0003), donnée (0.0003), expression algébrique imbriquée (0.0003), niveau externe (0.0003), modèle relationnel (0.0003)
+    Matches:       dérivation
+    Hit@10=0.3333  NDCG@10=0.1818
+
+  Query: comment choisir les cles candidats dans une base des donnees
+    GT KCs:        clef candidate, dependance fonctionnelle
+    Extracted KCs: donnée persistante (0.0033), couverture minimale (0.0033), donnée redondante (0.0033), données (0.0031), persistance (0.0031), stockage (0.0031), sauvegarde (0.0031), interrogation (0.0031), environnement de développement (0.0031), clé référentielle (0.0030)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Donne moi la requete SQL qui crée une equipe avec un id et un nom
+    GT KCs:        sql
+    Extracted KCs: pgadmin (0.0165), sgbd (0.0165), postgresql (0.0165), schéma relationnel (0.0097), schéma de base de données (0.0097), environnement de développement (0.0082), conteneurisation (0.0066), données (0.0049), persistance (0.0049), stockage (0.0049)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: comment supprimer une entrée d'une table
+    GT KCs:        sql
+    Extracted KCs: jointure (0.0070), donnée persistante (0.0045), couverture minimale (0.0045), donnée redondante (0.0045), clé référentielle (0.0040), clé primaire (0.0040), clé candidate (0.0040), aggrégation (0.0035), group by (0.0035), regroupement (0.0035)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Peux-tu me lister tous les types de dérivation possibles lorsque l'on passe d'un schéma conceptuel à un schéma logique ?
+    GT KCs:        dérivation, modèle conceptuel, modèle logique
+    Extracted KCs: structuration d'une base de données relationnelles (0.0152), normalisation (0.0101), règles de dérivation (0.0098), schéma conceptuel de données (0.0098), dérivation (0.0098), schéma logique de données (0.0098), modélisation conceptuelle (0.0072), relation universelle (0.0051), dictionnaire de données (0.0051), donnée redondante (0.0051)
+    Matches:       dérivation
+    Hit@10=0.3333  NDCG@10=0.1091
+
+  Query: A quoi sert l'annotation JoinColumn
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004), schéma conceptuel de données (0.0004), @transactional (0.0004), mapping association entre classes (0.0003)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: quelles sont les annotations nécessaires pour qu'une classe entitry soient persistées dans le base de données
+    GT KCs:        classe persistante jpa, orm
+    Extracted KCs: schéma conceptuel de données (0.0022), fetch (0.0020), entité gérée (0.0020), lazy (0.0020), entité détachée (0.0020), eager (0.0020), méthode merge (0.0020), data access object (0.0019), entitymanager (0.0019), méthodes crud (0.0006)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: comment uiliser l'annotation Id
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004), schéma conceptuel de données (0.0004), @transactional (0.0004), mapping association entre classes (0.0004)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: En l’absence d’annotation, un attribut d’une classe annotée @Entity est-il persisté ? Si oui, comment on indique à Hibernate qu’un attribut ne doit pas l’être ?
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004), schéma conceptuel de données (0.0004), @transactional (0.0004), mapping association entre classes (0.0004)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: "@GeneratedValue(strategy = GenerationType.IDENTITY) explique moi cette ligne"
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004), schéma conceptuel de données (0.0004), @transactional (0.0004), mapping association entre classes (0.0004)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Quelle est la méthode de CrudRepository permettant de recupérer tous les elements present
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0048), architecture multi-couches (0.0048), couche données (0.0048), architecture logicielle (0.0048), data access object (0.0039), bonnes pratiques tests (0.0016), configuration du test slicing (0.0016), test repository jpa (0.0016), spring crudrepository (0.0010), registre de micro-services (0.0009)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: donne un exemple de one to many
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: donnée persistante (0.0039), couverture minimale (0.0039), donnée redondante (0.0039), clé référentielle (0.0035), clé primaire (0.0035), clé candidate (0.0035), registre de micro-services (0.0009), base de données (0.0009), eureka (0.0009), pgadmin (0.0009)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: comment rajouter cette méthode findall dans le repository
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0058), architecture multi-couches (0.0058), couche données (0.0058), architecture logicielle (0.0058), data access object (0.0047), bonnes pratiques tests (0.0016), configuration du test slicing (0.0016), test repository jpa (0.0016), spring crudrepository (0.0010), test des services spring (0.0006)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: qu'est ce que c'est les annotations dans le code java pour faire les relations entre les entités ? 
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004), schéma conceptuel de données (0.0004), @transactional (0.0004), mapping association entre classes (0.0003)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: make a java class persistent
+    GT KCs:        classe persistante jpa
+    Extracted KCs: schéma conceptuel de données (0.0032), fetch (0.0030), entité gérée (0.0030), lazy (0.0030), entité détachée (0.0030), eager (0.0030), méthode merge (0.0030), data access object (0.0028), entitymanager (0.0028), méthodes crud (0.0010)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: comment créer une classe héritant de CrudRepository pour Team
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0046), architecture multi-couches (0.0046), couche données (0.0046), architecture logicielle (0.0046), data access object (0.0037), bonnes pratiques tests (0.0014), configuration du test slicing (0.0014), test repository jpa (0.0014), spring crudrepository (0.0010), registre de micro-services (0.0009)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: comment utiliser le MappedBy ?
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: spring repository (0.0054), architecture multi-couches (0.0054), couche données (0.0054), architecture logicielle (0.0054), data access object (0.0043), méthodes crud (0.0009), collection persistante (0.0009), jpa (0.0008), répertoire spring (0.0008), ddl.auto (0.0004)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Rappel moi les propriété ACID en base de donnée
+    GT KCs:        transaction base de données
+    Extracted KCs: accès concurrents (0.0125), verrou partagé (0.0045), lecture fantôme (0.0045), verrou exclusif (0.0045), niveau d'isolation (0.0045), durabilité (0.0042), isolation (0.0042), auto-commit (0.0042), commit (0.0042), atomicité (0.0042)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: qu'est ce que la deuxième forme normale ?
+    GT KCs:        normalisation
+    Extracted KCs: première forme normale (0.0044), troisième forme normale (0.0044), dépendance fonctionnelle (0.0044), dépendance fonctionnelle élementaire (0.0044), forme normale (0.0044), deuxième forme normale (0.0044), relation universelle (0.0032), niveau physique (0.0024), niveau logique (0.0024), grant (0.0024)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: comment décomposer une relation universelle en ensemble de relation de seconde forme normale
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: première forme normale (0.0037), troisième forme normale (0.0037), dépendance fonctionnelle (0.0037), dépendance fonctionnelle élementaire (0.0037), forme normale (0.0037), deuxième forme normale (0.0037), relation universelle (0.0027), niveau physique (0.0024), niveau logique (0.0024), grant (0.0024)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: As tu un example de cas ou une relation n''est pas une deuxième forme normale ?
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: couverture minimale (0.0063), première forme normale (0.0048), troisième forme normale (0.0048), dépendance fonctionnelle (0.0048), dépendance fonctionnelle élementaire (0.0048), forme normale (0.0048), deuxième forme normale (0.0048), relation universelle (0.0035), niveau physique (0.0029), niveau logique (0.0029)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: définis moi la troisème forme normale
+    GT KCs:        modèle relationnel, normalisation
+    Extracted KCs: couverture minimale (0.0052), première forme normale (0.0040), troisième forme normale (0.0040), dépendance fonctionnelle (0.0040), dépendance fonctionnelle élementaire (0.0040), forme normale (0.0040), deuxième forme normale (0.0040), relation universelle (0.0030), niveau physique (0.0024), niveau logique (0.0024)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: ACID signifie quoi ?
+    GT KCs:        transaction base de données
+    Extracted KCs: accès concurrents (0.0210), durabilité (0.0070), isolation (0.0070), auto-commit (0.0070), commit (0.0070), atomicité (0.0070), transaction (0.0070), rollback (0.0070), cohérence (0.0070), acid (0.0070)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: rappel moi JPA exactement ce que c'est
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0022), architecture multi-couches (0.0022), couche données (0.0022), architecture logicielle (0.0022), bonnes pratiques tests (0.0013), configuration du test slicing (0.0013), test repository jpa (0.0013), spring crudrepository (0.0009), méthodes crud (0.0007), collection persistante (0.0007)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: est ce que Hibernate est une implémentation concrète de JPA.
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0029), architecture multi-couches (0.0029), couche données (0.0029), architecture logicielle (0.0029), bonnes pratiques tests (0.0017), configuration du test slicing (0.0017), test repository jpa (0.0017), spring crudrepository (0.0012), méthodes crud (0.0009), collection persistante (0.0009)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Les composants annotés @Repository sont responsables de la gestion de la persistance des données.
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0047), architecture multi-couches (0.0047), couche données (0.0047), architecture logicielle (0.0047), data access object (0.0038), vue spring (0.0020), contrôleur spring (0.0020), modèle spring (0.0014), bonnes pratiques tests (0.0013), configuration du test slicing (0.0013)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: L’annotation @Entity sert à marquer une classe Java comme une table en base de données. vrai ou faux
+    GT KCs:        classe persistante jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004), schéma conceptuel de données (0.0004), @transactional (0.0004), mapping association entre classes (0.0004)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: L’annotation @Id indique quel attribut de la classe est utilisé comme clé primaire dans la table correspondante. vrai ou faux
+    GT KCs:        classe persistante jpa, clef primaire
+    Extracted KCs: donnée persistante (0.0037), couverture minimale (0.0037), donnée redondante (0.0037), clé référentielle (0.0033), clé primaire (0.0033), clé candidate (0.0033), méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: est ce que Avec JPA, les requêtes permettant de rendre persistantes les données de l'application sont écrites dans le code Java afin de lier le code et la BD.
+    GT KCs:        association classes persistantes jpa, classe persistante jpa, collection persistante, orm
+    Extracted KCs: spring repository (0.0023), architecture multi-couches (0.0023), couche données (0.0023), architecture logicielle (0.0023), bonnes pratiques tests (0.0014), configuration du test slicing (0.0014), test repository jpa (0.0014), spring crudrepository (0.0009), registre de micro-services (0.0008), base de données (0.0008)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: JPA est une API qui spécifie les méthodes disponibles pour gérer la persistance des objets. vrai ou faux
+    GT KCs:        orm
+    Extracted KCs: schéma conceptuel de données (0.0031), fetch (0.0029), entité gérée (0.0029), lazy (0.0029), entité détachée (0.0029), eager (0.0029), méthode merge (0.0029), data access object (0.0027), entitymanager (0.0027), spring repository (0.0027)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: comment savoir si on est en 2FN
+    GT KCs:        normalisation
+    Extracted KCs: couverture minimale (0.0085), première forme normale (0.0066), troisième forme normale (0.0066), dépendance fonctionnelle (0.0066), dépendance fonctionnelle élementaire (0.0066), forme normale (0.0066), deuxième forme normale (0.0066), relation universelle (0.0048), layered slicing (0.0041), configuration du test slicing (0.0039)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Peut-on définir JPA comme une API qui spécifie les méthodes disponibles pour gérer la persistance des objets ?
+    GT KCs:        orm
+    Extracted KCs: spring repository (0.0026), architecture multi-couches (0.0026), couche données (0.0026), architecture logicielle (0.0026), bonnes pratiques tests (0.0016), configuration du test slicing (0.0016), test repository jpa (0.0016), spring crudrepository (0.0010), registre de micro-services (0.0009), base de données (0.0009)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: je souahite ajouter un élément grâce au répository, comment s'y prendre
+    GT KCs:        collection persistante
+    Extracted KCs: spring repository (0.0053), architecture multi-couches (0.0053), couche données (0.0053), architecture logicielle (0.0053), data access object (0.0043), service (0.0033), framework de programmation (0.0033), spring boot (0.0033), java spring (0.0033), environnement de développement (0.0033)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: Comment fonctionne le @JoinColumn ? Et quand l'utiliser
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: méthodes crud (0.0008), collection persistante (0.0008), jpa (0.0007), data access object (0.0007), répertoire spring (0.0007), ddl.auto (0.0004), cascade (0.0004), schéma conceptuel de données (0.0004), @transactional (0.0004), mapping association entre classes (0.0004)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+
+  Query: explique les onetomany et manytoone
+    GT KCs:        association classes persistantes jpa
+    Extracted KCs: donnée persistante (0.0034), couverture minimale (0.0034), donnée redondante (0.0034), clé référentielle (0.0030), clé primaire (0.0030), clé candidate (0.0030), méthodes crud (0.0007), collection persistante (0.0007), jpa (0.0007), data access object (0.0007)
+    Matches:       (none)
+    Hit@10=0.0000  NDCG@10=0.0000
+  Hit@10 = 0.0900 ± 0.2521  |  NDCG@10 = 0.0295 ± 0.0773  |  Time = 1.5565s
+
+
+================================================================================
+Summary table
+================================================================================
+Method                                   |      Hit@4     NDCG@4 |      Hit@7     NDCG@7 |     Hit@10    NDCG@10
+----------------------------------------------------------------------------------------------------------------
+KG-based                                 |     0.0833     0.0273 |     0.0900     0.0295 |     0.0900     0.0295

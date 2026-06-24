@@ -8,6 +8,7 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+      - ${OLLAMA_MODELS_DIR:-~/.ollama/models}:/root/.ollama/models
     entrypoint:
       - /bin/sh
       - -c
@@ -45,13 +46,20 @@ services:
     depends_on:
       neo4j:
         condition: service_healthy
+    environment:
+      - LANG=C.UTF-8
+      - JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
     entrypoint:
       - /bin/sh
       - -c
       - |
         cypher-shell -a bolt://neo4j:7687 -u "${NEO4J_USER}" -p "${NEO4J_PASSWORD}" -f /scripts/build_kg.cypher
+        if [ -f /scripts/notions_weights.cypher ]; then
+          cypher-shell -a bolt://neo4j:7687 -u "${NEO4J_USER}" -p "${NEO4J_PASSWORD}" -f /scripts/notions_weights.cypher
+        fi
     volumes:
       - ./data/kg/build_kg.cypher:/scripts/build_kg.cypher:ro
+      - ./data/kg/notions_weights.cypher:/scripts/notions_weights.cypher:ro
     restart: "no"
 
 volumes:

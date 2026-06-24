@@ -2,10 +2,10 @@ timestamp;query;course;misalignment
 2026-02-16 13:14:24;comment identifier les dépendances fonctionnelles élémentaires et directes;lecture_normalization,activity_normalization;non
 2026-02-16 13:15:03;donne moi les dépendances fonctionnelles pour la relation universelle suivante : {idCompetition, nomCompetition, debut, fin, idEpreuve, nomEpreuve, categorie, ville, idAthlete, nomAthlete, nationalite, perf, class;lecture_normalization,activity_normalization;non
 2026-02-16 13:20:29;comment puis je identifier une clé primaire d'une table ?;lecture_normalization,activity_normalization;non
-2026-02-16 13:24:30;Qu'est ce qu'un schéma logique ?;lecture_conceptual_modeling; oui
-2026-02-16 13:08:27;Qu'est ce qu'une dependance fonctionelle;lecture_normalization,activity_normalization;oui
-2026-02-16 13:22:32;regle de derivation d'un schéma conceptuel;lecture_conceptual_modeling,activity_conceptual_modeling,activity_conceptual_modeling_advanced;oui
-2026-02-16 13:42:19;cest quoi ça la persistance dans une classe java;lecture_jpa,practice_jpa,data_home;oui
+2026-02-16 13:24:30;Qu'est ce qu'un schéma logique ?;lecture_conceptual_modeling;non
+2026-02-16 13:08:27;Qu'est ce qu'une dependance fonctionelle;lecture_normalization,activity_normalization;non
+2026-02-16 13:22:32;regle de derivation d'un schéma conceptuel;lecture_conceptual_modeling,activity_conceptual_modeling,activity_conceptual_modeling_advanced;non
+2026-02-16 13:42:19;cest quoi ça la persistance dans une classe java;lecture_jpa,practice_jpa;oui
 2026-02-16 13:43:28;si je veux ajouter de la persistance dans une classe entity pour que les istances de cette classe soient persistées dans la base données je dois faire quoi;lecture_jpa;oui
 2026-02-16 13:47:35;Dans mon projet, j'ai deux entité: player et team, une equipe contient plusieurs joueurs, quelle annotation je dois utiliser pour lié les deux classes java dans mon repertoire entity ?;lecture_jpa,practice_jpa;non
 2026-02-16 13:08:22;par exemple si j'ai un id qui est associé à plusieurs paramètres alors j'ai une relation élémentaire et direct entre l'id et tout les autresparamètres;lecture_normalization,activity_normalization,lecture_modeling_normalization;oui
@@ -13,14 +13,14 @@ timestamp;query;course;misalignment
 2026-02-16 14:49:28;Comment choisir la clé primaire d'une relation universelle ?;lecture_normalization,activity_normalization;non
 2026-02-16 14:53:40;si je te donne un exemple de jeu de données tu peux me proposer une clé primaire ?;lecture_normalization,activity_normalization;oui
 2026-02-16 13:48:05;Comment faire pour que des instances d'une classe soient persistés ?;lecture_jpa,practice_jpa;oui
-2026-02-16 14:50:38;comment faire un insert simple en sql;activity_sql,practice_sql;oui
-2026-02-16 13:19:36;Qu'est-ce que la règle de dérivation d'un schéma conceptuel;lecture_conceptual_modeling,activity_conceptual_modeling,activity_conceptual_modeling_advanced;oui
+2026-02-16 14:50:38;comment faire un insert simple en sql;activity_sql,practice_sql;non
+2026-02-16 13:19:36;Qu'est-ce que la règle de dérivation d'un schéma conceptuel;lecture_conceptual_modeling,activity_conceptual_modeling,activity_conceptual_modeling_advanced;non
 2026-02-16 14:49:28;Comment choisir la clé primaire d'une relation universelle ?;lecture_normalization,activity_normalization;non
 2026-02-16 15:29:46;comment choisir les cles candidats dans une base des donnees;lecture_normalization,activity_normalization,activity_relational_model;non
 2026-02-16 14:24:30;Donne moi la requete SQL qui crée une equipe avec un id et un nom;activity_sql,practice_sql;oui
-2026-02-16 14:27:52;comment supprimer une entrée d'une table;activity_sql,practice_sql,practice_advanced_sql;oui
-2026-02-16 13:16:14;Peux-tu me lister tous les types de dérivation possibles lorsque l'on passe d'un schéma conceptuel à un schéma logique ?;lecture_conceptual_modeling;oui
-2026-02-16 13:52:04;A quoi sert l'annotation JoinColumn;lecture_jpa,practice_jpa;oui
+2026-02-16 14:27:52;comment supprimer une entrée d'une table;activity_sql,practice_sql,practice_advanced_sql;non
+2026-02-16 13:16:14;Peux-tu me lister tous les types de dérivation possibles lorsque l'on passe d'un schéma conceptuel à un schéma logique ?;lecture_conceptual_modeling;non
+2026-02-16 13:52:04;A quoi sert l'annotation JoinColumn;lecture_jpa,practice_jpa;non
 2026-02-16 13:52:14;quelles sont les annotations nécessaires pour qu'une classe entitry soient persistées dans le base de données;lecture_jpa,practice_jpa;oui
 2026-02-16 13:54:53;comment uiliser l'annotation Id;lecture_jpa,practice_jpa;non
 2026-02-16 13:55:01;En l’absence d’annotation, un attribut d’une classe annotée @Entity est-il persisté ? Si oui, comment on indique à Hibernate qu’un attribut ne doit pas l’être ?;lecture_jpa,practice_jpa;non
@@ -28,7 +28,7 @@ timestamp;query;course;misalignment
 2026-02-16 14:10:20;Quelle est la méthode de CrudRepository permettant de recupérer tous les elements present;lecture_jpa_repository,practice_jpa,lecture_jpa;non
 2026-02-16 14:32:08;donne un exemple de one to many;lecture_jpa,practice_jpa;non
 2026-02-16 14:38:28;comment rajouter cette méthode findall dans le repository;lecture_jpa_repository,practice_jpa;non
-2026-02-16 14:43:03;qu'est ce que c'est les annotations dans le code java pour faire les relations entre les entités ? ;lecture_jpa,practice_jpa;oui
+2026-02-16 14:43:03;qu'est ce que c'est les annotations dans le code java pour faire les relations entre les entités ? ;lecture_jpa,practice_jpa;non
 2026-02-16 14:03:12;make a java class persistent;lecture_jpa;oui
 2026-02-16 14:23:35;comment créer une classe héritant de CrudRepository pour Team;lecture_jpa_repository;non
 2026-02-16 14:55:25;comment utiliser le MappedBy ?;lecture_jpa,practice_jpa;non
@@ -50,3 +50,105 @@ timestamp;query;course;misalignment
 2026-03-23 13:42:37;je souahite ajouter un élément grâce au répository, comment s'y prendre;lecture_jpa_repository;non
 2026-03-23 13:45:36;Comment fonctionne le @JoinColumn ? Et quand l'utiliser;lecture_jpa,practice_jpa;non
 2026-03-23 14:19:25;explique les onetomany et manytoone;lecture_jpa,practice_jpa;non
+none;Qu'est-ce qu'une architecture 2-tiers?;lecture_technical_architecture;oui
+none;Quelle est la différence entre une classe et un composant?;lecture_technical_architecture;oui
+none;Dans le cours, on parle de service et de micro-service. Quelle différence entre les deux et comment savoir s'il faut développer un service ou un micro-service?;lecture_technical_architecture;oui
+none;Une architecture N-tiers découpe une application verticalement en n parties. Dans la pratique jusqu'à combien de niveaux on peut découper?;lecture_technical_architecture;oui
+none;A quoi sert le principe de séparation de responsabilités?;lecture_technical_architecture;non
+none;Dans une architecture N-tiers, le nombre de clients est limité au nombre de tiers. Comment adapter dynamiquement le nombre de tiers au nombre de clients?;lecture_technical_architecture;non
+none;Quelle est la différence entre @Controller et @RestController?;lecture_technical_architecture;adv
+none;A quoi sert l'annotation @RequestMapping dans un contrôleur Spring?;lecture_technical_architecture;adv
+none;Quel est le fichier qui contient les informations de connexion à la base de données en JPA/Spring?;lecture_technical_architecture;adv
+none;Quelle annotation JPA permet de modifier le nom de la colonne qui mappe un attribut d'une entité?;lecture_technical_architecture;adv
+none;Que veut dire qu'une instance d'une entité est détachée de l'entity manager?;lecture_technical_architecture;adv
+none;Qu'est-ce qu'un patron de conception ?;lecture_software_architecture;oui
+none;Qu'est-ce que le patron MVC?;lecture_software_architecture;oui
+none;Donne moi le nom de quelques patrons de conception;lecture_software_architecture;oui
+none;Quel est le rôle d'un ORM dans une application ?;lecture_software_architecture;adv
+none;Quelle est la méthode JPA qui permet d'instancier une entité et initialiser ses attributs avec des valeurs de la base de données ?;lecture_software_architecture;adv
+none;Quels sont les différents états d'un objet géré par l'entity manager ?;lecture_software_architecture;adv
+none;Peux-tu me rappeler le nom d'un serveur d'application pour déployer une application Spring ?;lecture_software_architecture;adv
+none;Peux-tu me dire comment associer une url à une méthode du contrôleur et indiquer qu'il attend un paramètre nommé city de type String par GET ?;lecture_software_architecture;adv
+none;Explique moi avec des exemples ce que c'est la sérialisation/désérialisation;lecture_dto;oui
+none;Donne moi le nom de quelques langages communément utilisés pour sérialiser/désérialiser des objets;lecture_dto;oui
+none;Que veut dire l'acronyme DTO?;lecture_dto;oui
+none;Pourquoi on n'utilise pas le patron DTO lors de la communication entre un SGBD et une application alors qu'il y a un transfert d'objet via le réseau?;lecture_dto;oui
+none;Comment sérialiser les méthodes d'une classe?;lecture_dto;non
+none;Comment configurer un pom.xml pour effectuer un déploiement sur un serveur Wildfly ?;lecture_dto;adv
+none;Est-ce que JSON est un langage approprié pour représenter un DTO ?;lecture_dto;adv
+none;Comment faire en sorte que la base de données ne soit pas réinitialisée à chaque démarrage de l'application ?;lecture_dto;adv
+none;Comment indique-t-on dans le java qu'un attribut de classe correspond à une clé primaire autoincrémentée ?;lecture_dto;adv
+none;Y-a-il moyen de converitr directement un format XML en un format JSON et vise-vers-ça?;lecture_dto;adv
+none;Où doit-on définir les méthodes CRUD d'une entité dans une application Java Spring?;lecture_dto;adv
+none;Quelles sont les trois couches fonctionnelles qui structurent le code d'une application Web Spring?;lecture_mvc_spring;oui
+none;Qu'est-ce que c'est la couche applicative d'une application Spring?;lecture_mvc_spring;oui
+none;Quelle est la différence entre @Controller et @RestController?;lecture_mvc_spring;oui
+none;A quoi sert l'annotation @RequestMapping dans un contrôleur Spring?;lecture_mvc_spring;oui
+none;Dans quelle couche fonctionnelle d'une application Spring est utilisé le modèle MVC?;lecture_mvc_spring;oui
+none;Quelle est l'utilité de l'annotation @Entity dans une application Spring?;lecture_mvc_spring;non
+none;Quel est l'intérêt d'utiliser le patron DAO dans la couche données d'une application Spring?;lecture_mvc_spring;non
+none;Qu'est-ce que le patron MVC?;lecture_mvc_spring;non
+none;Qu'est-ce qu'une architecture technique?;lecture_mvc_spring;non
+none;Qu'est-ce qu'un patron de conception ?;lecture_mvc_spring;non
+none;Dis moi comment associer une méthode d'un contrôleur Spring avec une URL d'une page Web;lecture_mvc_spring;adv
+none;Pourquoi les contrôleurs Spring n'utilisent pas directement  les méthodes des DAO ?;lecture_mvc_spring;adv
+none;Rappele moi le nom de l'application qui permet d'accéder au contenu d'une base de données PostGreSQL;lecture_mvc_spring;adv
+none;Quelle est l'utilité des templates Thymeleaf ?;lecture_mvc_spring;adv
+none;Pourquoi l'annotation @Transactional est nécessaire pour certaines méthodes?;lecture_mvc_spring;adv
+none;Dis moi comment associer une méthode d'un contrôleur Spring avec une URL d'une page Web;practice_spring_2tiers;oui
+none;Pourquoi les contrôleurs Spring n'utilisent pas directement  les méthodes des DAO ?;practice_spring_2tiers;oui
+none;Rappele moi le nom de l'application qui permet d'accéder au contenu d'une base de données PostGreSQL;practice_spring_2tiers;oui
+none;Quelle est l'utilité des templates Thymeleaf ?;practice_spring_2tiers;oui
+none;Pourquoi l'annotation @Transactional est nécessaire pour certaines méthodes?;practice_spring_2tiers;oui
+none;Qu'est-ce qu'est le patron DAO ?;practice_spring_2tiers;non
+none;Que veut dire CRUD ?;practice_spring_2tiers;non
+none;Qu'est-ce qu'une architecture 2-tiers?;practice_spring_2tiers;non
+none;Quelle est la différence entre @Controller et @RestController ?;practice_spring_2tiers;adv
+none;Comment configurer un pom.xml pour effectuer un déploiement sur un serveur Wildfly ?;practice_spring_2tiers;adv
+none;Est-ce que JSON est un langage approprié pour représenter un DTO ?;practice_spring_2tiers;adv
+none;Peux-tu me dire comment associer une url à une méthode du contrôleur et indiquer qu'il attend un paramètre nommé city de type String par GET ?;practice_spring_2tiers;adv
+none;Peux-tu me rappeler le nom d'un serveur d'application pour déployer une application Spring ?;practice_spring_2tiers;adv
+none;Quel est le fichier qui contient les informations de connexion à la base de données en JPA/Spring?;lecture_jpa;oui
+none;Quelle annotation JPA permet de modifier le nom de la colonne qui mappe un attribut d'une entité?;lecture_jpa;oui
+none;Que veut dire qu'une instance d'une entité est détachée de l'entity manager?;lecture_jpa;oui
+none;Quel est le rôle d'un ORM dans une application ?;lecture_jpa;oui
+none;Quelle est la méthode JPA qui permet d'instancier une entité et initialiser ses attributs avec des valeurs de la base de données ?;lecture_jpa;oui
+none;Comment faire en sorte que la base de données ne soit pas réinitialisée à chaque démarrage de l'application ?;lecture_jpa;adv
+none;Comment indique-t-on dans le code Java qu'un attribut correspond à une clé primaire autoincrémentée ?;lecture_jpa;adv
+none;Où doit-on définir les méthodes CRUD d'une entité ?;lecture_jpa;adv
+none;Quelles annotations permettent de définir des associations entre classes ?;lecture_jpa;adv
+none;Est-ce que l'annotation @Column est indispensable pour indiquer qu'une propriété Java doit être persistée ?;lecture_jpa;adv
+none;Comment faire en sorte que la base de données ne soit pas réinitialisée à chaque démarrage de l'application ?;practice_jpa;oui
+none;Comment indique-t-on dans le java qu'un attribut de classe correspond à une clé primaire autoincrémentée ?;practice_jpa;oui
+none;Où doit-on définir les méthodes CRUD d'une entité ?;practice_jpa;oui
+none;Quelles annotations permettent de définir des associations entre classes ?;practice_jpa;oui
+none;Est-ce que l'annotation @Column est indispensable pour indiquer qu'une propriété java doit être persistée ?;practice_jpa;oui
+none;Qu'est-ce que c'est la couche applicative d'une application Spring?;practice_jpa;non
+none;C'est quoi un ORM ?;practice_jpa;non
+none;À quoi sert JPA ?;practice_jpa;non
+none;Quelles sont les trois couches fontionnelles qui structurent le code d'une application Web Spring?;practice_jpa;non
+none;Quelle est la différence entre @Controller et @RestController ?;practice_jpa;adv
+none;Peux-tu me rappeler le nom d'un serveur d'application pour déployer une application Spring ?;practice_jpa;adv
+none;Peux-tu me dire comment associer une url à une méthode du contrôleur et indiquer qu'il attend un paramètre nommé city de type String par GET ?;practice_jpa;adv
+none;Comment configurer un pom.xml pour effectuer un déploiement sur un serveur Wildfly ?;practice_jpa;adv
+none;Est-ce que JSON est un langage approprié pour représenter un DTO ?;practice_jpa;adv
+none;Quel est la classe Java qui gère la persistance des objets Java ?;practice_jpa_advanced;oui
+none;Comment indiquer une récupération différée des objets liés à une classe ?;practice_jpa_advanced;oui
+none;Quels sont les différents états d'un objet géré par l'entity manager ?;practice_jpa_advanced;oui
+none;Quelle est la différence entre merge et persist ?;practice_jpa_advanced;oui
+none;Quel est le lien entre contexte transactionnel et EntityManager ?;practice_jpa_advanced;oui
+none;C'est quoi un ORM ?;practice_jpa_advanced;non
+none;À quoi sert JPA ?;practice_jpa_advanced;non
+none;Comment faire en sorte que la base de données ne soit pas réinitialisée à chaque démarrage de l'application ?;practice_jpa_advanced;non
+none;Comment indique-t-on dans le java qu'un attribut de classe correspond à une clé primaire autoincrémentée ?;practice_jpa_advanced;non
+none;Où doit-on définir les méthodes CRUD d'une entité ?;practice_jpa_advanced;non
+none;Quelle est la différence entre @Controller et @RestController ?;practice_spring_2tiers_ext;oui
+none;Peux-tu me rappeler le nom d'un serveur d'application pour déployer une application Spring ?;practice_spring_2tiers_ext;oui
+none;Peux-tu me dire comment associer une url à une méthode du contrôleur et indiquer qu'il attend un paramètre nommé city de type String par GET ?;practice_spring_2tiers_ext;oui
+none;Comment configurer un pom.xml pour effectuer un déploiement sur un serveur Wildfly ?;practice_spring_2tiers_ext;oui
+none;Est-ce que JSON est un langage approprié pour représenter un DTO ?;practice_spring_2tiers_ext;oui
+none;C'est quoi une architecture multi-tiers ?;practice_spring_2tiers_ext;non
+none;Quelles sont les trois couches fontionnelles qui structurent le code d'une application Web Spring?;practice_spring_2tiers_ext;non
+none;Pourquoi a-t-on besoin d'un serveur d'application ?;practice_spring_2tiers_ext;non
+none;C'est quoi un ORM ?;practice_spring_2tiers_ext;non
+none;À quoi sert JPA ?;practice_spring_2tiers_ext;non

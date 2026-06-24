@@ -2,7 +2,7 @@
 Manage the corpus of queries_summary_
 """
 from csv import DictReader
-from config import QUERIES_FILE
+from config import CORPUS_QUESTION_ALIGNMENT
 
 class QueryLoader:
     def __init__(self, queries_file: str):
@@ -28,7 +28,7 @@ class QueryLoader:
 
 
 if __name__ == "__main__":
-    query_loader = QueryLoader(QUERIES_FILE)
+    query_loader = QueryLoader(CORPUS_QUESTION_ALIGNMENT)
     queries = query_loader.load_queries()
     print(f"Loaded {len(queries)} queries.")
     for query in queries:
