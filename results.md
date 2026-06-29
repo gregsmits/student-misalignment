@@ -21,3 +21,15 @@ With Mistral-embed
   NDCG:      0.0401 ± 0.1517
 
   
+  Student _misalignement
+  Corpus of aligned questions
+    TP=83  FP=0  TN=0  FN=10
+
+============================================================
+Misalignment Detection — Summary
+============================================================
+Method                    |   Recall | Precision |       F1
+------------------------------------------------------------
+KG-based                  |   0.8925 |    1.0000 |   0.9432
+
+  Corpus of misaligned questions

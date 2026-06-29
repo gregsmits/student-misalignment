@@ -1,0 +1,332 @@
+  Course lecture_technical_architecture: align=0.0322, prepos=None
+  Course lecture_software_architecture: align=0.0573, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Qu'est-ce qu'un patron de conception ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Qu'est-ce qu'un patron de conception ?" → predicted=misaligned, gt=aligned
+  Course lecture_software_architecture: align=0.0389, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Donne moi le nom de quelques patrons de conception" → predicted=misaligned, gt=aligned
+  [WRONG] "Donne moi le nom de quelques patrons de conception" → predicted=misaligned, gt=aligned
+Extracted KCs for query 'Explique moi avec des exemples ce que c'est la sérialisation/désérialisation': {'JSON.2': np.float32(0.030285213), 'JSON.1': np.float32(0.02825259), 'Archi.31': np.float32(0.02625688), 'Archi.32': np.float32(0.02625688), 'Archi.2': np.float32(0.015359345), 'Archi.52': np.float32(0.0018429338), 'Archi.30': np.float32(0.0015101612), 'Archi.54': np.float32(0.0009214757), 'Archi.53': np.float32(0.0009214757), 'Archi.12': np.float32(0.0008817853), 'Archi.43': np.float32(0.0007986753), 'Archi.38': np.float32(0.0007550806), 'Archi.26': np.float32(0.0007550806), 'Archi.14': np.float32(0.0007550806), 'Archi.18': np.float32(0.00071001524)}
+Extracted KCs for query 'Donne moi le nom de quelques langages communément utilisés pour sérialiser/désérialiser des objets': {'JSON.1': np.float32(0.15591708), 'JSON.2': np.float32(0.039348893), 'Archi.31': np.float32(0.033938263), 'Archi.32': np.float32(0.033938263), 'Archi.2': np.float32(0.018038716)}
+  No KC overlap with lecture_mvc_spring, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quelles sont les trois couches fonctionnelles qui structurent le code d'une appl" → predicted=misaligned, gt=aligned
+  [WRONG] "Quelles sont les trois couches fonctionnelles qui structurent le code d'une appl" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_mvc_spring, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Qu'est-ce que c'est la couche applicative d'une application Spring?" → predicted=misaligned, gt=aligned
+  [WRONG] "Qu'est-ce que c'est la couche applicative d'une application Spring?" → predicted=misaligned, gt=aligned
+  Course lecture_mvc_spring: align=0.0094, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quelle est la différence entre @Controller et @RestController?" → predicted=misaligned, gt=aligned
+  [WRONG] "Quelle est la différence entre @Controller et @RestController?" → predicted=misaligned, gt=aligned
+  Course lecture_mvc_spring: align=0.0112, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "A quoi sert l'annotation @RequestMapping dans un contrôleur Spring?" → predicted=misaligned, gt=aligned
+  [WRONG] "A quoi sert l'annotation @RequestMapping dans un contrôleur Spring?" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_mvc_spring, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Dans quelle couche fonctionnelle d'une application Spring est utilisé le modèle " → predicted=misaligned, gt=aligned
+  [WRONG] "Dans quelle couche fonctionnelle d'une application Spring est utilisé le modèle " → predicted=misaligned, gt=aligned
+  Course practice_spring_2tiers: align=0.0057, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Dis moi comment associer une méthode d'un contrôleur Spring avec une URL d'une p" → predicted=misaligned, gt=aligned
+  [WRONG] "Dis moi comment associer une méthode d'un contrôleur Spring avec une URL d'une p" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Pourquoi les contrôleurs Spring n'utilisent pas directement  les méthodes des DA" → predicted=misaligned, gt=aligned
+  [WRONG] "Pourquoi les contrôleurs Spring n'utilisent pas directement  les méthodes des DA" → predicted=misaligned, gt=aligned
+  Course practice_spring_2tiers: align=0.0094, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Rappele moi le nom de l'application qui permet d'accéder au contenu d'une base d" → predicted=misaligned, gt=aligned
+  [WRONG] "Rappele moi le nom de l'application qui permet d'accéder au contenu d'une base d" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quelle est l'utilité des templates Thymeleaf ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Quelle est l'utilité des templates Thymeleaf ?" → predicted=misaligned, gt=aligned
+  Course practice_spring_2tiers: align=0.0061, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Pourquoi l'annotation @Transactional est nécessaire pour certaines méthodes?" → predicted=misaligned, gt=aligned
+  [WRONG] "Pourquoi l'annotation @Transactional est nécessaire pour certaines méthodes?" → predicted=misaligned, gt=aligned
+  Course lecture_jpa: align=0.0120, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quel est le fichier qui contient les informations de connexion à la base de donn" → predicted=misaligned, gt=aligned
+  [WRONG] "Quel est le fichier qui contient les informations de connexion à la base de donn" → predicted=misaligned, gt=aligned
+  Course lecture_jpa: align=0.0084, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quel est le rôle d'un ORM dans une application ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Quel est le rôle d'un ORM dans une application ?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_jpa, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Comment faire en sorte que la base de données ne soit pas réinitialisée à chaque" → predicted=misaligned, gt=aligned
+  [WRONG] "Comment faire en sorte que la base de données ne soit pas réinitialisée à chaque" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_jpa, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Comment indique-t-on dans le java qu'un attribut de classe correspond à une clé " → predicted=misaligned, gt=aligned
+  [WRONG] "Comment indique-t-on dans le java qu'un attribut de classe correspond à une clé " → predicted=misaligned, gt=aligned
+  Course practice_jpa: align=0.0086, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Où doit-on définir les méthodes CRUD d'une entité ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Où doit-on définir les méthodes CRUD d'une entité ?" → predicted=misaligned, gt=aligned
+  Course practice_jpa: align=0.0075, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quelles annotations permettent de définir des associations entre classes ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Quelles annotations permettent de définir des associations entre classes ?" → predicted=misaligned, gt=aligned
+  Course practice_jpa_advanced: align=0.0267, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Comment indiquer une récupération différée des objets liés à une classe ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Comment indiquer une récupération différée des objets liés à une classe ?" → predicted=misaligned, gt=aligned
+  Course practice_jpa_advanced: align=0.0230, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quelle est la différence entre merge et persist ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Quelle est la différence entre merge et persist ?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers_ext, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quelle est la différence entre @Controller et @RestController ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Quelle est la différence entre @Controller et @RestController ?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers_ext, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Peux-tu me rappeler le nom d'un serveur d'application pour déployer une applicat" → predicted=misaligned, gt=aligned
+  [WRONG] "Peux-tu me rappeler le nom d'un serveur d'application pour déployer une applicat" → predicted=misaligned, gt=aligned
+  Course practice_spring_2tiers_ext: align=0.0125, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Peux-tu me dire comment associer une url à une méthode du contrôleur et indiquer" → predicted=misaligned, gt=aligned
+  [WRONG] "Peux-tu me dire comment associer une url à une méthode du contrôleur et indiquer" → predicted=misaligned, gt=aligned
+  Course practice_spring_2tiers_ext: align=0.0096, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Comment configurer un pom.xml pour effectuer un déploiement sur un serveur Wildf" → predicted=misaligned, gt=aligned
+  [WRONG] "Comment configurer un pom.xml pour effectuer un déploiement sur un serveur Wildf" → predicted=misaligned, gt=aligned
+Evaluating query: "Est-ce que JSON est un langage approprié pour représenter un DTO ?" with ongoing courses: ['practice_spring_2tiers_ext']
+Extracted KCs for query 'Est-ce que JSON est un langage approprié pour représenter un DTO ?': {'JSON.1': np.float32(0.14921851), 'Archi.31': np.float32(0.034477945), 'Archi.32': np.float32(0.034477945), 'Archi.2': np.float32(0.021119727), 'Archi.1': np.float32(0.021119727), 'Archi.4': np.float32(0.021119727), 'Archi.3': np.float32(0.021119727)}
+  Course practice_spring_2tiers_ext: align=0.0313, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Est-ce que JSON est un langage approprié pour représenter un DTO ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Est-ce que JSON est un langage approprié pour représenter un DTO ?" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_normalization, skipping.
+  No KC overlap with activity_normalization, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "comment puis je identifier une clé primaire d'une table ?" → predicted=misaligned, gt=aligned
+  [WRONG] "comment puis je identifier une clé primaire d'une table ?" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_normalization, skipping.
+  No KC overlap with activity_normalization, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Comment choisir la clé primaire d'une relation universelle ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Comment choisir la clé primaire d'une relation universelle ?" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_normalization, skipping.
+  No KC overlap with activity_normalization, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Comment choisir la clé primaire d'une relation universelle ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Comment choisir la clé primaire d'une relation universelle ?" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_normalization, skipping.
+  No KC overlap with activity_normalization, skipping.
+  Course activity_relational_model: align=0.0192, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "comment choisir les cles candidats dans une base des donnees" → predicted=misaligned, gt=aligned
+  [WRONG] "comment choisir les cles candidats dans une base des donnees" → predicted=misaligned, gt=aligned
+Evaluating query: "@GeneratedValue(strategy = GenerationType.IDENTITY) explique moi cette ligne" with ongoing courses: ['lecture_jpa', 'practice_jpa']
+Extracted KCs for query '@GeneratedValue(strategy = GenerationType.IDENTITY) explique moi cette ligne': {'JPA.31': np.float32(0.0008196941), 'JPA.3': np.float32(0.0007433703), 'Archi.36': np.float32(0.0007433703), 'Archi.49': np.float32(0.00066178007), 'Archi.24': np.float32(0.0005741445), 'JPA.33': np.float32(0.00040984704), 'Archi.46': np.float32(0.00040984704), 'Archi.51': np.float32(0.00040984704), 'JPA.32': np.float32(0.00040984704), 'JPA.12': np.float32(0.00037169032), 'JPA.14': np.float32(0.00037169032), 'JPA.7': np.float32(0.00037169032), 'JPA.20': np.float32(0.00037169032), 'JPA.11': np.float32(0.00037169032), 'JPA.6': np.float32(0.00037169032)}
+  [OK] "@GeneratedValue(strategy = GenerationType.IDENTITY) explique moi cette ligne" → predicted=aligned, gt=aligned
+  Course practice_jpa: align=0.0082, prepos=None
+  No KC overlap with lecture_jpa, skipping.
+  No KC overlap with lecture_jpa, skipping.
+  No KC overlap with practice_jpa, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "donne un exemple de one to many" → predicted=misaligned, gt=aligned
+  [WRONG] "donne un exemple de one to many" → predicted=misaligned, gt=aligned
+  Course practice_jpa: align=0.0099, prepos=None
+  Course practice_jpa: align=0.0180, prepos=None
+  Course lecture_jpa: align=0.0047, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "est ce que Hibernate est une implémentation concrète de JPA." → predicted=misaligned, gt=aligned
+  [WRONG] "est ce que Hibernate est une implémentation concrète de JPA." → predicted=misaligned, gt=aligned
+  Course lecture_jpa: align=0.0039, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "L’annotation @Id indique quel attribut de la classe est utilisé comme clé primai" → predicted=misaligned, gt=aligned
+  [WRONG] "L’annotation @Id indique quel attribut de la classe est utilisé comme clé primai" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_jpa, skipping.
+  No KC overlap with activity_jpa, skipping.
+  Course lecture_jpa_repository: align=0.0263, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "est ce que Avec JPA, les requêtes permettant de rendre persistantes les données " → predicted=misaligned, gt=aligned
+  [WRONG] "est ce que Avec JPA, les requêtes permettant de rendre persistantes les données " → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_jpa, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Peut-on définir JPA comme une API qui spécifie les méthodes disponibles pour gér" → predicted=misaligned, gt=aligned
+  [WRONG] "Peut-on définir JPA comme une API qui spécifie les méthodes disponibles pour gér" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_jpa, skipping.
+  No KC overlap with practice_jpa, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "explique les onetomany et manytoone" → predicted=misaligned, gt=aligned
+  [WRONG] "explique les onetomany et manytoone" → predicted=misaligned, gt=aligned
+Evaluating query: "Dans une architecture N-tiers, le nombre de clients est limité au nombre de tier" with ongoing courses: ['lecture_technical_architecture']
+Extracted KCs for query 'Dans une architecture N-tiers, le nombre de clients est limité au nombre de tiers. Comment adapter dynamiquement le nombre de tiers au nombre de clients?': {'Archi.47': np.float32(0.012380357), 'DB.1': np.float32(0.012380357), 'DB.2': np.float32(0.012380357), 'DB.9': np.float32(0.007299761), 'DB.10': np.float32(0.007299761), 'Archi.29': np.float32(0.0068321535), 'Dev.2': np.float32(0.0061902255), 'Docker.2': np.float32(0.0049497318), 'Archi.4': np.float32(0.004682655), 'Docker.4': np.float32(0.0035435483), 'Docker.5': np.float32(0.0035435483), 'Archi.5': np.float32(0.0033337434), 'Archi.10': np.float32(0.0033337434), 'Archi.8': np.float32(0.0033337434), 'Archi.13': np.float32(0.0033337434)}
+  Course lecture_technical_architecture: align=0.0199, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Dans une architecture N-tiers, le nombre de clients est limité au nombre de tier" → predicted=misaligned, gt=aligned
+  [WRONG] "Dans une architecture N-tiers, le nombre de clients est limité au nombre de tier" → predicted=misaligned, gt=aligned
+Extracted KCs for query 'Comment sérialiser les méthodes d'une classe?': {'JSON.2': np.float32(0.03927927), 'JSON.1': np.float32(0.036643002), 'Archi.31': np.float32(0.033878215), 'Archi.32': np.float32(0.033878215), 'Archi.2': np.float32(0.019704489), 'Archi.52': np.float32(0.0019431133), 'Archi.30': np.float32(0.0015922515), 'Archi.54': np.float32(0.00097156584), 'Archi.53': np.float32(0.00097156584), 'Archi.12': np.float32(0.0009297179), 'Archi.43': np.float32(0.00084209023), 'Archi.38': np.float32(0.00079612574), 'Archi.26': np.float32(0.00079612574), 'Archi.14': np.float32(0.00079612574), 'Archi.18': np.float32(0.0007486107)}
+  Course lecture_mvc_spring: align=0.0129, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quelle est l'utilité de l'annotation @Entity dans une application Spring?" → predicted=misaligned, gt=aligned
+  [WRONG] "Quelle est l'utilité de l'annotation @Entity dans une application Spring?" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_mvc_spring, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Quel est l'intérêt d'utiliser le patron DAO dans la couche données d'une applica" → predicted=misaligned, gt=aligned
+  [WRONG] "Quel est l'intérêt d'utiliser le patron DAO dans la couche données d'une applica" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_mvc_spring, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Qu'est-ce que le patron MVC?" → predicted=misaligned, gt=aligned
+  [WRONG] "Qu'est-ce que le patron MVC?" → predicted=misaligned, gt=aligned
+  No KC overlap with lecture_mvc_spring, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Qu'est-ce qu'une architecture technique?" → predicted=misaligned, gt=aligned
+  [WRONG] "Qu'est-ce qu'une architecture technique?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Qu'est-ce qu'est le patron DAO ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Qu'est-ce qu'est le patron DAO ?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Que veut dire CRUD ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Que veut dire CRUD ?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Qu'est-ce qu'une architecture 2-tiers?" → predicted=misaligned, gt=aligned
+  [WRONG] "Qu'est-ce qu'une architecture 2-tiers?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_jpa, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Qu'est-ce que c'est la couche applicative d'une application Spring?" → predicted=misaligned, gt=aligned
+  [WRONG] "Qu'est-ce que c'est la couche applicative d'une application Spring?" → predicted=misaligned, gt=aligned
+  Course practice_jpa: align=0.0086, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "C'est quoi un ORM ?" → predicted=misaligned, gt=aligned
+  [WRONG] "C'est quoi un ORM ?" → predicted=misaligned, gt=aligned
+  Course practice_jpa: align=0.0074, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "À quoi sert JPA ?" → predicted=misaligned, gt=aligned
+  [WRONG] "À quoi sert JPA ?" → predicted=misaligned, gt=aligned
+  Course practice_jpa_advanced: align=0.0229, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "C'est quoi un ORM ?" → predicted=misaligned, gt=aligned
+  [WRONG] "C'est quoi un ORM ?" → predicted=misaligned, gt=aligned
+  Course practice_jpa_advanced: align=0.0018, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "À quoi sert JPA ?" → predicted=misaligned, gt=aligned
+  [WRONG] "À quoi sert JPA ?" → predicted=misaligned, gt=aligned
+  Course practice_jpa_advanced: align=0.0167, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Comment faire en sorte que la base de données ne soit pas réinitialisée à chaque" → predicted=misaligned, gt=aligned
+  [WRONG] "Comment faire en sorte que la base de données ne soit pas réinitialisée à chaque" → predicted=misaligned, gt=aligned
+  Course practice_jpa_advanced: align=0.0018, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Comment indique-t-on dans le java qu'un attribut de classe correspond à une clé " → predicted=misaligned, gt=aligned
+  [WRONG] "Comment indique-t-on dans le java qu'un attribut de classe correspond à une clé " → predicted=misaligned, gt=aligned
+  Course practice_jpa_advanced: align=0.0020, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Où doit-on définir les méthodes CRUD d'une entité ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Où doit-on définir les méthodes CRUD d'une entité ?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers_ext, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "C'est quoi une architecture multi-tiers ?" → predicted=misaligned, gt=aligned
+  [WRONG] "C'est quoi une architecture multi-tiers ?" → predicted=misaligned, gt=aligned
+  Course practice_spring_2tiers_ext: align=0.0086, prepos=None
+  Current misalignment score: None
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "Pourquoi a-t-on besoin d'un serveur d'application ?" → predicted=misaligned, gt=aligned
+  [WRONG] "Pourquoi a-t-on besoin d'un serveur d'application ?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers_ext, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "C'est quoi un ORM ?" → predicted=misaligned, gt=aligned
+  [WRONG] "C'est quoi un ORM ?" → predicted=misaligned, gt=aligned
+  No KC overlap with practice_spring_2tiers_ext, skipping.
+  Misalignment score: None
+Predicted aligned: False, Ground truth aligned: True
+  [FN] "À quoi sert JPA ?" → predicted=misaligned, gt=aligned
+  [WRONG] "À quoi sert JPA ?" → predicted=misaligned, gt=aligned
+  Recall: 0.4388  Precision: 1.0000  F1: 0.6099
+  TP=43  FP=0  TN=0  FN=55
+Method                    |   Recall | Precision |       F1

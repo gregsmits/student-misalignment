@@ -9,7 +9,7 @@ Metrics: recall, precision, F1-score.
 from index_creator import IndexCreator
 from query_corpus_loader import QueryLoader
 from kc_extractor import extract_kcs_kg_based
-from config import CORPUS_QUESTION_ALIGNMENT, LLM_ENDPOINT, CHAT_MODEL, TEMPERATURE, logger
+from config import CORPUS_QUESTION_ALIGNMENT, ALIGNMENT_THRESHOLD, LLM_ENDPOINT, CHAT_MODEL, TEMPERATURE, logger
 from tqdm import tqdm
 import requests
 import json
@@ -64,62 +64,91 @@ def parse_llm_alignment(raw: str) -> bool | None:
 
 # -- Method 1: KG-based alignment --
 
-def detect_misalignment_kg(query: str, ongoing_courses: list[str], indexer: IndexCreator, debug: bool = False) -> bool | None:
-    """Detect misalignment using the KG-based approach.
-    Extracts KCs from the query via the FAISS index, finds the most similar course in the KG,
-    then computes a misalignment score based on prerequisite distance and KC overlap.
-    Returns True if aligned (score == 0), False if misaligned, None if undetermined.
+def quantify_alignment(query: str, ongoing_courses: list[str], indexer: IndexCreator, debug: bool = False) -> float:
+    """Quantify alignment between a query and ongoing courses using gradual inclusion.
+    Returns the maximum over ongoing courses of the degree to which the query KCs
+    are included in the course KCs (through its sections). Result in [0, 1].
     """
-    kcq = extract_kcs_kg_based(query, indexer, top_k=15)
-    if len(kcq) == 0:
-        print(f"No KCs extracted for query \"{query}\". Unable to determine alignment.") if debug else None
-        return 666  # Undetermined
+    kcq = extract_kcs_kg_based(query, indexer)
 
-    print(f"Extracted KCs for query '{query}': {kcq}") if debug else None
-
-    maxcourse = None
-    maxsim = -1
-    for cid, label in kg_query.get_all_courses():
-        kcc = kg_query.course_to_notions(cid)
-        sim = fuzzy_jacquard_similarity(kcq, kcc)
-        if maxcourse is None or sim > maxsim:
-            maxcourse = cid
-            maxsim = sim
-
-    dist_prereq_max = kg_query.get_prerequisite_courses_ids_with_distances(maxcourse)
-    
-    print(f"  Most similar course: {maxcourse} (sim={maxsim:.4f})") if debug else None
-    print(f"\t - Prerequisite distances for {maxcourse}: {dist_prereq_max}") if debug else None
-    misalign = None
-    for course_id in ongoing_courses:
-        course_kcs = kg_query.course_to_notions(course_id)
-        print(f"  Comparing with ongoing course {course_id}: KCs={course_kcs}") if debug else None
-
-        align_ongoing = fuzzy_jacquard_similarity(kcq, course_kcs)
-        if align_ongoing == 0:
-            print(f"  No KC overlap with {course_id}, skipping.") if debug else None
-            continue
-
-        dist_prereq = kg_query.get_prerequisite_courses_ids_with_distances(course_id)
-        
-        prepos = None
-        if maxcourse in dist_prereq:
-            prepos = (- dist_prereq[maxcourse] / max(dist_prereq.values())) if dist_prereq[maxcourse] > 0 else 0
-        elif course_id in dist_prereq_max:
-            prepos = (dist_prereq_max[course_id] / max(dist_prereq_max.values())) if dist_prereq_max[course_id] > 0 else 0
-
-        print(f"  Course {course_id}: align={align_ongoing:.4f}, prepos={prepos}") if debug else None
-
-        if prepos is not None:
-            score = prepos * math.fabs(align_ongoing - fuzzy_jacquard_similarity(kcq, kg_query.course_to_notions(maxcourse)))
-            misalign = score if misalign is None or (misalign != 0 and score < misalign) else misalign 
+    if debug:
+        print(f"Extracted KCs for query '{query}':")
+        for kc in kcq:
+            info = kg_query.get_notion_by_id(kc)
+            label = info["label"] if info else "Unknown"
+            print(f"  KC: {kc} ({label}), weight={kcq[kc]:.4f}")
             
-        print(f"  Current misalignment score: {misalign}") if debug else None
+    if not kcq:
+        return ValueError("No KCs extracted from the query. Cannot quantify alignment.")
 
-    print(f"  Misalignment score: {misalign}") if debug else None
+    sum_kcq = sum(kcq.values())
 
-    #return true in cas of alignment
-    return misalign is not None or misalign == 0.0
+    #Maximum inclusion in ongoing courses
+    max_inclusion = 0.0
+    max_inclusion_course = None
+    notcompared=True
+    for course_id in ongoing_courses:
+        kcc = kg_query.get_notion_weights_for_course(course_id)
+        if len(kcc) == 0:
+            print(f"  No KCs found for course {course_id}, skipping.") if debug else None
+            continue
+        else:
+            print(f"  KCs for course {course_id}: {kcc}") if debug else None
+            notcompared=False
+        inclusion = sum(min(kcq[n], kcc.get(n, 0.0)) for n in kcq) / sum_kcq
+
+        if debug:
+            print(f"  Course {course_id} : inclusion={inclusion:.4f}")
+            for kc in kcc:
+                if kc in kcq:
+                    info = kg_query.get_notion_by_id(kc)
+                    label = info["label"] if info else "Unknown"
+                    print(f"    KC: {kc} ({label}), query_weight={kcq[kc]:.4f}, course_weight={kcc[kc]:.4f}, min={min(kcq[kc], kcc[kc]):.4f}")
+        if inclusion > max_inclusion:
+            max_inclusion_course = course_id
+            max_inclusion = inclusion
+
+    #maximum inclusion in all courses
+    all_courses = kg_query.get_all_courses()
+    max_inclustion_all_courses = 0.0
+    max_inclusion_all_courses_course = None
+    for course_id in all_courses: 
+        if course_id in ongoing_courses:
+            continue  # Already considered
+        kcc = kg_query.get_notion_weights_for_course(course_id)
+        if len(kcc) == 0:
+            continue
+        inclusion = sum(min(kcq[n], kcc.get(n, 0.0)) for n in kcq) / sum_kcq
+        if inclusion > max_inclustion_all_courses:
+            max_inclusion_all_courses = inclusion
+            max_inclusion_all_courses_course = course_id
+
+    #check prerequisite position between max_inclusion_course and max_inclusion_all_courses_course
+    prepos = 0
+    
+    if max_inclusion_course and max_inclusion_all_courses_course:
+        if max_inclusion_course == max_inclusion_all_courses_course:
+            prepos = 0
+        else:
+            #get prerequisites for max_inclusion_all_courses_course
+            
+
+            prereqs2 = kg_query.get_prerequisite_courses_ids_with_distances(max_inclusion_course)
+            if max_inclusion_course_all_courses_course in prereqs:
+                prepos = -((prereqs2[max_inclusion_all_courses_course]) / max(prereqs2.values()))
+            else:
+                prereqs = kg_query.get_prerequisite_courses_ids_with_distances(max_inclusion_all_courses_course)
+                if max_inclusion_course in prereqs:
+                    prepos = (prereqs[max_inclusion_course]) / max(prereqs.values())
+                else:
+                    return None
+
+    res = prepos * abs(max_inclusion - max_inclustion_all_courses)
+    print(f"  Max inclusion in ongoing courses: {max_inclusion:.4f} (course: {max_inclusion_course})") if debug else None
+    print(f"  Max inclusion in all courses: {max_inclustion_all_courses:.4f} (course: {max_inclusion_all_courses_course})") if debug else None
+    print(f"  Prerequisite position factor: {prepos:.4f}") if debug else None   
+    print(f"  Final alignment score: {res:.4f}") if debug else None
+    return res
 
 
 # -- Method 2: LLM-based alignment --
@@ -133,7 +162,8 @@ def _build_system_context(ongoing_courses: list[str]) -> str:
 
 
 def detect_misalignment_llm_zeroshot(query: str, ongoing_courses: list[str]) -> bool | None:
-    """Zero-shot: ask the LLM directly."""
+    """Zero-shot: ask the LLM directly.
+    returns oui, non, adv"""
     context = _build_system_context(ongoing_courses)
     prompt = (
         f"{context}\n\n"
@@ -213,40 +243,46 @@ def evaluate_misalignment(
     tp, fp, tn, fn = 0, 0, 0, 0
     
     
-    for query in tqdm(queries[:30], desc=method):
+    for query in tqdm(queries, desc=method):
         ongoing_courses = query["course"]
-        gt_aligned = query["misalignment"].strip() == "non"
-
+        gt_aligned = query["misalignment"].strip()
+        predicted_aligned = None
+    
         print(f"\n*******\nEvaluating query: \"{query['query'][:80]}\" with ongoing courses: {ongoing_courses}") if debug else None
 
         if method == "KG-based":
-            predicted_aligned = detect_misalignment_kg(query["query"], ongoing_courses, indexer, debug=debug) != 0.0
+            try:
+                alignment_score = quantify_alignment(query["query"], ongoing_courses, indexer, debug=debug)
+                if alignment_score == 0:
+                    predicted_aligned = "non"
+                elif alignment_score > 0:
+                    predicted_aligned = "adv"
+                else:
+                    predicted_aligned = "oui"
+
+            except ValueError as e:
+                printf(f"Error for query {query} : {e}")
+                continue
         else:
             llm_fn = STRATEGIES[method]
-            predicted_aligned = llm_fn(query["query"], ongoing_courses)
+            predicted_aligned = llm_fn(query["query"], ongoing_courses)#should return oui, non, adv or None
 
         print(f"Predicted aligned: {predicted_aligned}, Ground truth aligned: {gt_aligned}") if debug else None
 
-        if predicted_aligned == 666:
-            continue  # Skip if the prediction is undetermined (None)
-        #for adv handling
-        
-        
-
-        if predicted_aligned and gt_aligned:
-            tp += 1
-        elif predicted_aligned and not gt_aligned:
-            print(f"  [FP] \"{query['query'][:80]}\" → predicted=aligned, gt=misaligned") if debug else None
-            fp += 1
-        elif not predicted_aligned and gt_aligned:
-            print(f"  [FN] \"{query['query'][:80]}\" → predicted=misaligned, gt=aligned") if debug else None    
-            fn += 1
-        else:
-            tn += 1
-
-        if debug:
-            status = "OK" if (predicted_aligned == gt_aligned) else "WRONG"
-            print(f"  [{status}] \"{query['query'][:80]}\" → predicted={'aligned' if predicted_aligned else 'misaligned'}, gt={'aligned' if gt_aligned else 'misaligned'}")
+     
+        accurate_mis = 0
+        accurate_align = 0
+        accurate_adv = 0
+        nb_oui
+        if predicted_aligned is not None:
+            if predicted_aligned and gt_aligned:
+               
+                if gt_aligned == "oui":
+                    accuracy_oui += 1
+                elif gt_aligned == "non":
+                    accuracy_non += 1
+                else:
+                    accuracy_adv += 1
 
     recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
     precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
@@ -258,28 +294,38 @@ def evaluate_misalignment(
 if __name__ == "__main__":
     debug = "--debug" in sys.argv
 
-    
-       
+    if 1:
+        METHOD = None#"kg-based"  # or None to run all the methods
+        QUERY= "Quelle annotation JPA permet de modifier le nom de la colonne qui mappe un attribut d'une entité?"
+        ONGOING_COURSES = ["lecture_jpa"]
+
     indexer = IndexCreator()
-    query_loader = QueryLoader(CORPUS_QUESTION_ALIGNMENT)
 
-    methods = list(STRATEGIES.keys())
-    results = {}
+    if METHOD is not None:
+        #just evaluate one method on one query
+       print( quantify_alignment(QUERY, ONGOING_COURSES, indexer, debug=debug))
+    
 
-    for method in methods:
+    else:
+        query_loader = QueryLoader(CORPUS_QUESTION_ALIGNMENT)
+
+        methods = list(STRATEGIES.keys())
+        results = {}
+
+        for method in methods:
+            print(f"\n{'='*60}")
+            print(f"Evaluating: {method}")
+            print(f"{'='*60}")
+            metrics = evaluate_misalignment(method, query_loader, indexer=indexer, debug=debug)
+            results[method] = metrics
+            print(f"  Recall: {metrics['recall']:.4f}  Precision: {metrics['precision']:.4f}  F1: {metrics['f1']:.4f}")
+            print(f"  TP={metrics['tp']}  FP={metrics['fp']}  TN={metrics['tn']}  FN={metrics['fn']}")
+
         print(f"\n{'='*60}")
-        print(f"Evaluating: {method}")
+        print("Misalignment Detection — Summary")
         print(f"{'='*60}")
-        metrics = evaluate_misalignment(method, query_loader, indexer=indexer, debug=debug)
-        results[method] = metrics
-        print(f"  Recall: {metrics['recall']:.4f}  Precision: {metrics['precision']:.4f}  F1: {metrics['f1']:.4f}")
-        print(f"  TP={metrics['tp']}  FP={metrics['fp']}  TN={metrics['tn']}  FN={metrics['fn']}")
-
-    print(f"\n{'='*60}")
-    print("Misalignment Detection — Summary")
-    print(f"{'='*60}")
-    print(f"{'Method':<25} | {'Recall':>8} | {'Precision':>9} | {'F1':>8}")
-    print("-" * 60)
-    for method in methods:
-        m = results[method]
-        print(f"{method:<25} | {m['recall']:>8.4f} | {m['precision']:>9.4f} | {m['f1']:>8.4f}")
+        print(f"{'Method':<25} | {'Recall':>8} | {'Precision':>9} | {'F1':>8}")
+        print("-" * 60)
+        for method in methods:
+            m = results[method]
+            print(f"{method:<25} | {m['recall']:>8.4f} | {m['precision']:>9.4f} | {m['f1']:>8.4f}")

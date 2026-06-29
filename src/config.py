@@ -14,7 +14,7 @@ MODEL_STORAGE="/Users/smits/.ollama/models"
 
 #Data files
 MD_COURSES_DIR = "data/courses"
-CORPUS_QUESTION_ALIGNMENT= "data/queries/questions_resources_expert.csv"
+CORPUS_QUESTION_ALIGNMENT= "data/queries/misaligned_queries.csv"
 CORPUS_QUESTION_KC_MAPPING= "data/queries/questions_resources_KC_expert.csv"
 
 
@@ -41,6 +41,6 @@ NEO4J_URL="bolt://127.0.0.1:7687"
 NB_COURSES_TOPK = 3
 NB_SECTIONS_TOPK = 10
 NB_NOTIONS_TOPK = 15
-
+ALIGNMENT_THRESHOLD = 0.1
 
 COURSES_TO_IGNORE = ['unknown','test_intermediaire_part1','test_intermediaire_part2']

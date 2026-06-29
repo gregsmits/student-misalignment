@@ -47,62 +47,71 @@ def get_prerequisite_courses_ids_with_distances( course_id: str) -> dict[str, in
     return prereq_ids
 
 
-def get_sections_and_courses() -> dict[str, list[str]] :
-    """
-    Retrieve the section IDs associated with a given course ID.
-    
-    Args:
-        neo4j_driver: Neo4j driver instance
-        course_id: The ID of the course for which to retrieve sections
-
+def get_dependent_courses_ids_with_distances(course_id: str) -> dict[str, int]:
+    """Retrieve courses that depend on (come after) the given course, with their distances.
     Returns:
-        A set of section IDs associated with the course.
+        A dictionary mapping dependent course IDs to their distance from course_id.
     """
     neo4j_driver = get_driver()
-    course_to_sections: dict[str, list[str]] = {}
     with neo4j_driver.session() as session:
-        CxS_result = session.run("""
-            MATCH (c:Course)-[:has_section]->(s:Section)
-            RETURN 
-              c.id AS course_id, 
-              s.label AS section_id
-        """)    
-        for record in CxS_result:
-            cid = record["course_id"]
-            sid = record["section_id"]
-            if cid not in course_to_sections:
-                course_to_sections[cid] = []
-            course_to_sections[cid].append(sid)
-    return course_to_sections
+        result = session.run("""
+            MATCH (c:Course {id: $course_id})-[:PREREQUISITE*1..]->(dep:Course)
+            RETURN dep.id AS dep_id, length(shortestPath((c)-[:PREREQUISITE*1..]->(dep))) AS distance
+        """, course_id=course_id)
+        return {record["dep_id"]: record["distance"] for record in result}
 
-
-def get_notions_and_sections() -> dict[str, list[str]] :
-    """
-    Retrieve the notion IDs associated with a given section ID.
-    
-    Args:
-        neo4j_driver: Neo4j driver instance
-        section_id: The ID of the section for which to retrieve notions
-
+def get_notion_by_id(notion_id: str) -> dict[str, str] | None:
+    """Retrieve notion details by its ID.
     Returns:
-        A set of notion IDs associated with the section.
+        A dict with notion details (id, label) or None if not found.
     """
-    section_to_notions: dict[str, list[str]] = {}
     neo4j_driver = get_driver()
     with neo4j_driver.session() as session:
-        SxN_result = session.run("""
-            MATCH (s:Section)-[:has_notion]->(n:Notion)
-            RETURN 
-              s.label AS section_id, 
-              n.id AS notion_id
-        """)    
-        for record in SxN_result:
-            sid = record["section_id"]
-            nid = record["notion_id"]
-            if sid not in section_to_notions:
-                section_to_notions[sid] = []
-            section_to_notions[sid].append(nid)
-    return section_to_notions
+        result = session.run("""
+            MATCH (n:Notion {id: $notion_id})
+            RETURN n.id AS notion_id, n.label AS notion_label
+        """, notion_id=notion_id)
+        record = result.single()
+        if record:
+            return {"id": record["notion_id"], "label": record["notion_label"]}
+        return None
+
+def get_sections_with_urls_for_course(course_id: str) -> list[dict]:
+    """Get sections for a course with their labels and URLs."""
+    neo4j_driver = get_driver()
+    with neo4j_driver.session() as session:
+        result = session.run("""
+            MATCH (c:Course {id: $course_id})-[:has_section]->(s:Section)
+            RETURN s.label AS label, s.url AS url
+        """, course_id=course_id)
+        return [{"label": record["label"], "url": record["url"]} for record in result]
+
+
+def get_children_by_parent(query: str, parent_key: str, child_key: str) -> dict[str, list[str]]:
+    """Run a Cypher query and group child values by parent value."""
+    neo4j_driver = get_driver()
+    result_map: dict[str, list[str]] = {}
+    with neo4j_driver.session() as session:
+        for record in session.run(query):
+            pid = record[parent_key]
+            cid = record[child_key]
+            if pid not in result_map:
+                result_map[pid] = []
+            result_map[pid].append(cid)
+    return result_map
+
+
+def get_sections_and_courses() -> dict[str, list[str]]:
+    return get_children_by_parent(
+        "MATCH (c:Course)-[:has_section]->(s:Section) RETURN c.id AS course_id, s.label AS section_id",
+        "course_id", "section_id",
+    )
+
+def get_notions_and_sections() -> dict[str, list[str]]:
+    return get_children_by_parent(
+        "MATCH (s:Section)-[:has_notion]->(n:Notion) RETURN s.label AS section_id, n.id AS notion_id",
+        "section_id", "notion_id",
+    )
 
 def get_all_notions() -> set[str] :
     """
@@ -147,7 +156,7 @@ def get_all_courses() -> set[str] :
             clabel = record["course_label"]
             all_courses.add((cid, clabel))
     return all_courses
-    
+
 def get_notion_weights_for_course(course_id: str) -> dict[str, float]:
     """Retrieve the weighted notions for a given course from the KG.
     Returns:
@@ -160,7 +169,6 @@ def get_notion_weights_for_course(course_id: str) -> dict[str, float]:
             RETURN n.id AS notion_id, r.weight AS weight
         """, course_id=course_id)
         return {record["notion_id"]: record["weight"] for record in result}
-
 
 def get_all_notion_weights() -> dict[str, dict[str, float]]:
     """Retrieve all weighted notions for all courses from the KG.
@@ -183,6 +191,7 @@ def get_all_notion_weights() -> dict[str, dict[str, float]]:
 
 
 _cached_notion_weights: dict[str, dict[str, float]] = {}
+
 
 def get_cached_notion_weights() -> dict[str, dict[str, float]]:
     """Retrieve all notion weights from the KG (module-level cache)."""
@@ -269,6 +278,14 @@ def compute_notions_weight_by_course(debug: bool = False) -> dict[str, dict[str,
 
             notions_weights[cid][nid] = weight
 
+    #softmax normalization of weights for each notion across all courses
+    for cid in notions_weights:
+        weights = list(notions_weights[cid].values())
+        max_weight = max(weights) if weights else 1.0
+        exp_weights = [math.exp(w - max_weight) for w in weights]
+        sum_exp_weights = sum(exp_weights)
+        for i, nid in enumerate(notions_weights[cid]):
+            notions_weights[cid][nid] = exp_weights[i] / sum_exp_weights if sum_exp_weights > 0 else 0.0
     return notions_weights
 
 
@@ -330,27 +347,70 @@ def reload_kg_data(debug: bool = False) -> None:
                 if debug:
                     print(f"Executed {len(statements)} statements from {filename}.")
 
+def get_sections_concerning_notion(notion_id: str) -> list[dict[str, str]]:
+    """Retrieve sections that are linked to a given notion."""
+    neo4j_driver = get_driver()
+    with neo4j_driver.session() as session:
+        result = session.run("""
+            MATCH (s:Section)-[:has_notion]->(n:Notion {id: $notion_id})
+            RETURN s.label AS section_label, s.url AS section_url
+        """, notion_id=notion_id)
+        return [{"label": record["section_label"], "url": record["section_url"]} for record in result]
+
+def get_notions_for_section(section_id: str, course_id: str) -> dict[str, float]:
+    """Retrieve notions linked to a given section and course, along with their weights."""
+    neo4j_driver = get_driver()
+    with neo4j_driver.session() as session:
+        result = session.run("""
+            MATCH (c:Course {id: $course_id})-[:has_section]->(s:Section {label: $section_id})-[:has_notion]->(n:Notion)
+            OPTIONAL MATCH (c)-[r:has_weighted_notion]->(n)
+            RETURN n.id AS notion_id, r.weight AS weight
+        """, course_id=course_id, section_id=section_id)
+        return {record["notion_id"]: record["weight"] for record in result if record["notion_id"] is not None}  
+
 
 if __name__ == "__main__":
     import sys
     debug = "--debug" in sys.argv
 
+    if 0: #section concerned by a given notion
+        notion_id = "JPA.23"
+        res = get_sections_concerning_notion(notion_id)
+        print(f" concerning notion {notion_id}:") if debug else None
+        for sec in res:
+            #print section label, url and weight if debug is enabled
+            weight = get_notion_weights_for_section(sec['label'], "lecture_jpa").get(notion_id, 0.0)
+            print(f"  Section: {sec['label']}, URL: {sec['url']}, Weight: {weight:.4f}") if debug else None
 
-    if 1:# to compute notion weights and generate the Cypher file to store them in the KG
+    if 1: 
+        course_id = "practice_spring_2tiers"
+        res = get_notion_weights_for_course(course_id)
+        #display the notion id, label and weight for the course if debug is enabled
+        print(f"Notion weights for course {course_id}:") if debug else None
+        for nid, weight in res.items():
+            notion_info = get_notion_by_id(nid)
+            label = notion_info["label"] if notion_info else "Unknown"
+            print(f"  Notion: {nid} ({label}), Weight: {weight:.4f}") if debug else None
+
+    if 0:
+        #get notion for a given section id and course id
+        section_id = "**Question 1.5**"
+        course_id = "practice_jpa"
+        res = get_notion_weights_for_section(section_id, course_id)
+        #display the notion id, label and weight for the section if debug is enabled
+        print(f"Notion weights for section {section_id} (Course: {course_id}):") if debug else None
+        for nid, weight in res.items():
+            notion_info = get_notion_by_id(nid)
+            label = notion_info["label"] if notion_info else "Unknown"
+            print(f"  Notion: {nid} ({label}), Weight: {weight:.4f}") if debug else None
+
+
+    if 0:# to compute notion weights and generate the Cypher file to store them in the KG
         print("Computing notion weights from KG structure...")
         weights = compute_notions_weight_by_course(debug=debug)    
         store_weights_in_kg(weights)
 
-    if 1: # to reload the KG from the Cypher files in data/kg
+    if 0: # to reload the KG from the Cypher files in data/kg
         print("Reloading KG data from Cypher files...")
         reload_kg_data(debug=debug)
 
-    # test get weights for a specific course and notion
-    if 1:
-        test_course_id = 'practice_indexation'
-        test_notion_id = "Conc.26"
-        weights = get_notion_weights_for_course(test_course_id)
-        if test_notion_id in weights:
-            print(f"Weight of notion {test_notion_id} for course {test_course_id}: {weights[test_notion_id]:.4f}")
-        else:
-            print(f"Notion {test_notion_id} not found for course {test_course_id}.")

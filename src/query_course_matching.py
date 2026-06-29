@@ -76,11 +76,48 @@ def evaluate_query_course_matching(indexer: IndexCreator, query_loader: QueryLoa
 if __name__ == "__main__":
     debug = "--debug" in sys.argv
     fault = "--fault" in sys.argv
-
     indexer = IndexCreator()
-    query_loader = QueryLoader(CORPUS_QUESTION_ALIGNMENT)
+    
 
-    metrics = evaluate_query_course_matching(indexer, query_loader, debug=debug, fault=fault)
-    print(f"\n=== Query-Course Matching Results ({metrics['n']} queries) ===")
-    print(f"  Hit rate:  {metrics['mean_hit']:.4f} ± {metrics['std_hit']:.4f}")
-    print(f"  NDCG:      {metrics['mean_ndcg']:.4f} ± {metrics['std_ndcg']:.4f}")
+    if 1:
+        CORPUS_QUESTION_ALIGNMENT = "data/queries/questions_resources_expert.csv"
+        from collections import Counter
+        query_loader = QueryLoader(CORPUS_QUESTION_ALIGNMENT)
+        queries = query_loader.load_queries()
+        mismatches = 0
+        for query in queries:
+            sections = indexer.get_topk_matching_sections(query['query'])
+            course_counts = Counter(course_id for (course_id, _) in sections)
+            top3 = [course_id for course_id, _ in course_counts.most_common(3)]
+            gt = set(query['course'])
+            if query['misalignment'] == "oui":
+                if gt.intersection(top3):
+                    mismatches += 1
+                    print(f"\nMisaligned Query: {query['query']}")
+                    print(f"  GT: {', '.join(query['course'])}")
+                    for course_id, count in course_counts.most_common(3):
+                        print(f"  -> {course_id} ({count} sections)")
+            else:
+                if not gt.intersection(top3):
+                    mismatches += 1
+                    print(f"\nAligned Query: {query['query']}")
+                    print(f"  GT: {', '.join(query['course'])}")
+                    for course_id, count in course_counts.most_common(3):
+                        print(f"  -> {course_id} ({count} sections)")
+        print(f"\n=== {mismatches}/{len(queries)} queries had no GT course in top 3 ===")
+
+    if 0:
+        #One query test
+        #A quoi sert l'annotation @RequestMapping dans un contrôleur Spring?
+        #Dis moi comment associer une méthode d'un contrôleur Spring avec une URL d'une page Web
+        QUERY = "A quoi sert l'annotation @RequestMapping dans un contrôleur Spring?"
+        ONGOING_COURSES = ["lecture_mvc_spring"]
+        print("Query:", QUERY)
+        print(indexer.get_topk_matching_course(QUERY))
+    if 0:
+        query_loader = QueryLoader(CORPUS_QUESTION_ALIGNMENT)
+
+        metrics = evaluate_query_course_matching(indexer, query_loader, debug=debug, fault=fault)
+        print(f"\n=== Query-Course Matching Results ({metrics['n']} queries) ===")
+        print(f"  Hit rate:  {metrics['mean_hit']:.4f} ± {metrics['std_hit']:.4f}")
+        print(f"  NDCG:      {metrics['mean_ndcg']:.4f} ± {metrics['std_ndcg']:.4f}")

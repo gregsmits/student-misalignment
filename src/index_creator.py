@@ -10,7 +10,7 @@ from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
 import kg_query
 import math
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 import re
 
 
@@ -178,9 +178,11 @@ class IndexCreator:
             for nid, weight in sorted(course_notions.items(), key=lambda item: item[1], reverse=True)
         ]
 
+        heading_to_section = self._build_heading_to_section_map(course_id)
+
         with open(course_path, "r") as f:
             content = f.read()
-            section_chunks = self._chunk_markdown_by_section(content)
+            section_chunks = self._chunk_markdown_by_section(content, heading_to_section)
             docs = []
             for idx, (section_id, chunk) in enumerate(section_chunks):
                 section_notions = [
@@ -222,20 +224,81 @@ class IndexCreator:
             start = max(0, end - overlap)
         return chunks
 
-    def _chunk_markdown_by_section(self, text: str, chunk_size: int = 500, overlap: int = 50) -> list[tuple[str, str]]:
-        """Chunk markdown by section headings and preserve section IDs."""
+    @staticmethod
+    def _heading_to_slug(heading: str) -> str:
+        """Convert a markdown heading to a URL-compatible slug for matching against KG section URLs."""
+        slug = re.sub(r'[*_`\[\]]', '', heading)
+        slug = slug.lower()
+        slug = slug.replace('’', '').replace("'", '')
+        slug = re.sub(r'[(){}]', '', slug)
+        slug = re.sub(r'[^\w\s-]', '-', slug, flags=re.UNICODE)
+        slug = re.sub(r'[\s_]+', '-', slug)
+        slug = re.sub(r'-+', '-', slug)
+        slug = slug.strip('-')
+        return slug
+
+    def _build_heading_to_section_map(self, course_id: str) -> dict[str, str]:
+        """Build a mapping from heading slug to KG section label for a course."""
+        sections = kg_query.get_sections_with_urls_for_course(course_id)
+        mapping: dict[str, str] = {}
+
+        for section in sections:
+            url = section["url"]
+            label = section["label"]
+
+            if "#" in url:
+                anchor = unquote(url.split("#", 1)[1])
+                mapping[anchor] = label
+
+            label_slug = self._heading_to_slug(label)
+            if label_slug not in mapping:
+                mapping[label_slug] = label
+
+        return mapping
+
+    def _chunk_markdown_by_section(self, text: str, heading_to_section: dict[str, str] = None, chunk_size: int = 500, overlap: int = 50) -> list[tuple[str, str]]:
+        """Chunk markdown by section headings aligned with KG sections.
+
+        When heading_to_section is provided, only headings that match a KG section
+        create a new section boundary; other headings stay in the current section.
+        """
         sections = []
         current_section = "root"
         current_text = []
+        in_code_block = False
+
         for line in text.splitlines(keepends=True):
-            heading_match = re.match(r'^(#{2,})\s*(.+)$', line)
+            if line.strip().startswith('```'):
+                in_code_block = not in_code_block
+                current_text.append(line)
+                continue
+
+            if in_code_block:
+                current_text.append(line)
+                continue
+
+            heading_match = re.match(r'^(#{1,})\s*(.+)$', line)
             if heading_match:
-                if current_text:
-                    sections.append((current_section, ''.join(current_text)))
-                current_section = heading_match.group(2).strip()
-                current_text = [line]
+                heading_text = heading_match.group(2).strip()
+
+                if heading_to_section is not None:
+                    slug = self._heading_to_slug(heading_text)
+                    kg_label = heading_to_section.get(slug)
+                    if kg_label:
+                        if current_text:
+                            sections.append((current_section, ''.join(current_text)))
+                        current_section = kg_label
+                        current_text = [line]
+                    else:
+                        current_text.append(line)
+                else:
+                    if current_text:
+                        sections.append((current_section, ''.join(current_text)))
+                    current_section = heading_text
+                    current_text = [line]
             else:
                 current_text.append(line)
+
         if current_text:
             sections.append((current_section, ''.join(current_text)))
 
@@ -299,6 +362,8 @@ class IndexCreator:
         ks = NB_SECTIONS_TOPK if NB_COURSES_TOPK is not None else 10
         index_results = self.index.similarity_search_with_score(query, ks)
         for section in index_results:
+            #display section metadata and score if debug is enabled
+            print(f"***** Section: {section[0].metadata.get('section_id', 'Unknown')}, Course: {section[0].metadata.get('course_id', 'Unknown')}, Score: {section[1]:.4f}")
             #do not consider the test-intermediate courses in the results
             if section[0].metadata and "source" in section[0].metadata:
                 cs = section[0].metadata["source"][len(MD_COURSES_DIR)+1:].replace(".md", "")
@@ -313,7 +378,36 @@ class IndexCreator:
         
         results = dict(sorted(results.items(), key=lambda item: item[1], reverse=True)[:k])          
         return results
+            
+    def get_topk_matching_sections(self, query: str, k: int=NB_SECTIONS_TOPK) -> dict[tuple[str, str], float]:
+        """
+        Get the top k matching sections for a given query.
+        Args:
+            query (str): The query to search for.
+            k (int): The number of top matching sections to return.
+        Returns:
+            dict[tuple[str, str], float]: A dictionary mapping section IDs to their corresponding similarity scores.
+        """        
+        results = {}
+        ks = NB_SECTIONS_TOPK if NB_COURSES_TOPK is not None else 10
+        index_results = self.index.similarity_search_with_score(query, ks)
+        for section in index_results:
+            #do not consider the test-intermediate courses in the results
+            if section[0].metadata and "source" in section[0].metadata:
+                cs = section[0].metadata["source"][len(MD_COURSES_DIR)+1:].replace(".md", "")
+                if cs not in COURSES_TO_IGNORE:
+                    section_id = section[0].metadata.get('section_id', 'Unknown')
+                    course_id = section[0].metadata.get('course_id', 'Unknown')
+                    if (course_id, section_id) not in results:
+                        results[(course_id, section_id)] = 0
+                    results[(course_id, section_id)] = max(results[(course_id, section_id)], section[1])
 
+        for (course_id, section_id), score in results.items():
+            nb_chunks = self.get_course_chunk_count(course_id)
+            results[(course_id, section_id)] /= nb_chunks #normalize by k to get an average similarity score per course
+
+        results = dict(sorted(results.items(), key=lambda item: item[1], reverse=True)[:k])
+        return results
 
 def print_index_summary(indexer: "IndexCreator"):
     print(f"\n=== Index Summary ===")
